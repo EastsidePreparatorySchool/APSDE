@@ -1,0 +1,33 @@
+Logan:
+ - Java
+ - Python
+ - HTML
+ - CSS
+
+ Caden:
+ - Java
+ - Javascript
+ - Python
+ - JavaFX
+ - HTML
+ - CSS
+
+ Jackson:
+ - Java
+ - Artist
+ - Photoshop
+ - HTML
+ - CSS
+
+ Patrick:
+ - Java
+ - Python
+
+ Gavin:
+ - Java
+ - JavaFX
+ - Python
+ - Javascript
+ - HTML
+ - CSS
+ - Webcomponents
