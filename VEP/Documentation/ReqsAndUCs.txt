@@ -1,0 +1,14 @@
+Requirments:
+	Handle high user count without crashing
+	Verify through Four11
+		Could be connected to school account to:
+			Verify voting (Prevent voter fraud)
+			Prevent voting multiple times
+	Anonymous voting:
+		Optional tracking of demographics based on school account
+		
+	Record Votes
+		Allow student body to view results
+
+Use Cases:
+##Write them here if you want##
