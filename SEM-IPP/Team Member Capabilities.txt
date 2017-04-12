@@ -1,6 +1,10 @@
 Logan:
  - Java
  - Python
+ - Photoshop
+ - HTML
+ - CSS
+
  - HTML
  - CSS
 
@@ -15,10 +19,6 @@ Logan:
  Jackson:
  - Java
  - Artist
- - Photoshop
- - HTML
- - CSS
-
  Patrick:
  - Java
  - Python
