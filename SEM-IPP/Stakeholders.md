@@ -1,5 +1,5 @@
-Stakeholders:
-
+Stakeholders
+------------
  - Ms. Mein
  - Mr. Mein
  - Mr. Wassink
@@ -7,8 +7,8 @@ Stakeholders:
  - Gavin Uberti
  - Che Liu
 
- Interview Questions:
-
+Interview Questions:
+------
  - Why do you want this software?
  - How do you want to interact with it?
  - Are there any specific features you would want incorporated?
