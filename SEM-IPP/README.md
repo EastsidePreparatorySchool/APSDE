@@ -34,3 +34,7 @@ Capabilities
 - Image Algorithms
   - Patrick
   - Jackson T.
+
+Designs
+======
+![alt text](https://github.com/EastsidePreparatorySchool/APSDE/blob/master/SEM-IPP/Designs/mockup_sem_image_v2.jpg "Logo Title Text 1")
