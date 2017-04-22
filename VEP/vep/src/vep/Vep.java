@@ -48,12 +48,14 @@ public class Vep extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        launch(args);
+        //launch(args);
         // ===== HENRYS CODE DO NOT TOUCH (for now)=====
         System.out.println("hellow world");
         //Fartingaroundmain.path;
         System.out.println(System.getProperty("user.dir").toLowerCase());
-        String cmd = "rscript.exe C:\\Users\\hsamuelson\\Desktop\\tester.R " + System.getProperty("user.dir").toLowerCase();
+        //String cmd = (System.getProperty("user.dir").toLowerCase()).replace("C:/", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe" + (System.getProperty("user.dir").toLowerCase()).replace("C:/", " ");
+        String cmd = (System.getProperty("user.dir") ).replace("C:", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R";
+
         System.out.println(cmd);
         Runtime r = Runtime.getRuntime();
         Process pr = r.exec(cmd);
