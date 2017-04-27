@@ -1,0 +1,7 @@
+Millan: HTML, JS, (minimal) Node.JS
+Henry: R, Node.JS,
+James: PHP and nothing else
+Nathan: 
+Hinson: 
+FK: 
+##Add whatever else, I'm going to assume everyone knows Java##
