@@ -4,14 +4,32 @@
  * and open the template in the editor.
  */
 package scheduleprotoyper;
-import java.io.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /**
  *
  * @author hmeng
  */
 public class FileReader {
-    public static String readFile(){
-        
+    public static String readFile(int linenumber){
+        Scanner scanner = null;
+            try {
+                //Get the scanner instance
+                scanner = new Scanner(new File("filename.csv"));
+                //Use Delimiter as COMMA
+                
+            }
+            catch (FileNotFoundException fe) 
+            {
+                    fe.printStackTrace();
+            }
+            finally
+            {
+                    scanner.close();
+            }
         return null;
     }
 }
