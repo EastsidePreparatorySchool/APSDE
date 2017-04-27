@@ -54,7 +54,7 @@ public class Vep extends Application {
         //Fartingaroundmain.path;
         System.out.println(System.getProperty("user.dir").toLowerCase());
         //String cmd = (System.getProperty("user.dir").toLowerCase()).replace("C:/", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe" + (System.getProperty("user.dir").toLowerCase()).replace("C:/", " ");
-        String cmd = (System.getProperty("user.dir") ).replace("C:", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R --arg1=1 -- arg2=345";
+        String cmd = (System.getProperty("user.dir") ).replace("C:", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R 4 345";
 
         System.out.println(cmd);
         Runtime r = Runtime.getRuntime();

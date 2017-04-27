@@ -1,53 +1,59 @@
-#print("R works!!")
-#for(i in 1:10){
-#  print(i)
-#}
+setwd("C:/Users/HSamuelson/Documents/GitHub/APSDE/VEP/vep/")
+args <- commandArgs(trailingOnly = TRUE)
+#rnorm(n=as.numeric(args[1]), mean=as.numeric(args[2]))
+print("starting")
+#print(as.numeric(args[1]) * as.numeric(args[2]))
+print("ending")
+
+#
+# Henry Samuelson
+#
+#Reading CSV and returning data
 print(getwd())
-args <- commandArgs(TRUE)
+dataBase <- read.csv("idDatabase (1).csv")
+votes <- read.csv("votesTEMP.csv")
 
-## Default setting when no arguments passed
-if(length(args) < 1) {
-  args <- c("--help")
-}
+#arg1 -- id
+#arg2 --"lastfirst"
+#arg3 -- wanting to vote?
 
-## Help section
-if("--help" %in% args) {
-  cat("
-      The R Script
-      
-      Arguments:
-      --arg1=someValue   - numeric, blah blah
-      --arg2=someValue   - character, blah blah
-      --arg3=someValue   - logical, blah blah
-      --help              - print this text
-      
-      Example:
-      ./test.R --arg1=1 --arg2='output.txt' --arg3=TRUE \n\n")
+#Check if ID and name exsist and match
+idprocess <- function(idq, nameq, votingID){
+
+  final <- numeric(0)
+ 
+  #check if id exsists in order not to mess up the subset()
+  idexsists <- 0
+  for(i in 1:length(dataBase$id)){
+    if(dataBase$id[i] == idq) {
+      idexsists <- 1
+    }
+  }
   
-  q(save="no")
+  if(idexsists != 1) {
+    return("NoID")
+  }
+  if(tryCatch( subset(dataBase, dataBase$id == idq)$name == nameq)) {
+    #Cast ballot
+    if((subset(dataBase, dataBase$id == idq)$hasVoted == 0) && votingID != 0){
+      print("hit int 1")
+      votes[votingID] = votes[votingID] + 1
+      
+      #user has voted change has voted column
+      dataBase[subset(dataBase, dataBase$id == idq)$easyIndex, ]$hasvoted = 1
+    }
+    return("yah")
+    #sssssprint("y")
+    
+  } else{
+    return("nah")
+  } #print("n")
+  
+  
+
+  
 }
+  
 
-## Parse arguments (we expect the form --arg=value)
-parseArgs <- function(x) strsplit(sub("^--", "", x), "=")
-argsDF <- as.data.frame(do.call("rbind", parseArgs(args)))
-argsL <- as.list(as.character(argsDF$V2))
-names(argsL) <- argsDF$V1
+idprocess(args[1], args[2], args[3])
 
-## Arg1 default
-if(is.null(args$arg1)) {
-  ## do something
-}
-
-## Arg2 default
-if(is.null(args$arg2)) {
-  ## do something
-}
-
-## Arg3 default
-if(is.null(args$arg3)) {
-  ## do something
-}
-
-## ... your code here ...
-print(arg1)
-print(arg2)
