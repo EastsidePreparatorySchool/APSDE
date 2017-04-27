@@ -39,7 +39,8 @@ public class Course extends Rectangle {
     
     Course(String input) {
         //period, grades allowed, class name, teacher, credit type *break*
-        //
+        //parse the strings here
+        
     }
 }
 
