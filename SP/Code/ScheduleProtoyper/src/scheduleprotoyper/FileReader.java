@@ -10,24 +10,8 @@ import java.io.*;
  * @author hmeng
  */
 public class FileReader {
-
-    public FileReader() {
-    }
-    public static String readToString() {
-        BufferedReader br = new BufferedReader(new FileReader());
-try {
-    StringBuilder sb = new StringBuilder();
-    String line = br.readLine();
-
-    while (line != null) {
-        sb.append(line);
-        sb.append(System.lineSeparator());
-        line = br.readLine();
-    }
-    String everything = sb.toString();
-} finally {
-    br.close();
-}
+    public static String readFile(){
+        
         return null;
     }
 }
