@@ -27,25 +27,26 @@ import javafx.stage.Stage;
  */
 public class Vep extends Application {
 
+    Scene scene;
+
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+        BorderPane root = new LoginUserInterface(this);
+        scene = new Scene(root, 1200, 1000);
 
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-
-        BorderPane root = new LoginUserInterface();
-
-        Scene scene = new Scene(root, 1200, 1000);
-
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("EPS Student Body President and Vice President Election 2017");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public void openVotingUserInterface() {
+        BorderPane root = new VotingUserInterface(this);
+        scene.setRoot(root);
+    }
+
+    public void openLoginUserInterface() {
+        BorderPane root = new LoginUserInterface(this);
+        scene.setRoot(root);
     }
 
     /**
