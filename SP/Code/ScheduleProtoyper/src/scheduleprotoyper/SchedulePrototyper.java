@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author hhale
+ * @author hhale 
  */
 public class SchedulePrototyper extends Application {
     
