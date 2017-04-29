@@ -5,6 +5,7 @@
  */
 package vep;
 
+import java.awt.Rectangle;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,7 +14,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -21,24 +26,23 @@ import javafx.stage.Stage;
  * @author HSamuelson
  */
 public class Vep extends Application {
-    
+
     @Override
     public void start(Stage primaryStage) {
         Button btn = new Button();
         btn.setText("Say 'Hello World'");
         btn.setOnAction(new EventHandler<ActionEvent>() {
-            
+
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Hello World!");
             }
         });
-        
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        
-        Scene scene = new Scene(root, 300, 250);
-        
+
+        BorderPane root = new LoginUserInterface();
+
+        Scene scene = new Scene(root, 1200, 1000);
+
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -54,21 +58,20 @@ public class Vep extends Application {
         //Fartingaroundmain.path;
         System.out.println(System.getProperty("user.dir").toLowerCase());
         //String cmd = (System.getProperty("user.dir").toLowerCase()).replace("C:/", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe" + (System.getProperty("user.dir").toLowerCase()).replace("C:/", " ");
-        String cmd = (System.getProperty("user.dir") ).replace("C:", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R 4 345";
+        String cmd = (System.getProperty("user.dir")).replace("C:", " ") + "\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R 4 345";
 
         System.out.println(cmd);
         Runtime r = Runtime.getRuntime();
         Process pr = r.exec(cmd);
 
         BufferedReader stdInput = new BufferedReader(
-            new InputStreamReader( pr.getInputStream() ));
+                new InputStreamReader(pr.getInputStream()));
 
-        String s ;
-        
-        
+        String s;
+
         while ((s = stdInput.readLine()) != null) {
             System.out.println(s);
         }
     }
-    
+
 }
