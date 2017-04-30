@@ -32,7 +32,7 @@ public class Vep extends Application {
     @Override
     public void start(Stage primaryStage) {
         BorderPane root = new LoginUserInterface(this);
-        scene = new Scene(root, 1200, 1000);
+        scene = new Scene(root, 2000, 1000);
 
         primaryStage.setTitle("EPS Student Body President and Vice President Election 2017");
         primaryStage.setScene(scene);
