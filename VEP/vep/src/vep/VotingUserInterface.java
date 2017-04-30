@@ -28,6 +28,7 @@ import javafx.scene.text.TextAlignment;
 public class VotingUserInterface extends BorderPane {
 
     Vep vep;
+    Boolean explainedSpoiling = false;
 
     VotingUserInterface(Vep v) {
         super();
@@ -45,13 +46,6 @@ public class VotingUserInterface extends BorderPane {
         this.setCenter(centerHolder);
         this.setTop(logoutButtonHolder);
         this.setAlignment(this.getTop(), Pos.TOP_RIGHT);
-
-        //place empty text field to be updated if they inquire as to what spoiling is.
-        Text whatIsSpoiling = new Text(20, 40, "");
-        whatIsSpoiling.setWrappingWidth(600);
-        whatIsSpoiling.setTextAlignment(TextAlignment.CENTER);
-        this.setBottom(whatIsSpoiling);
-
     }
 
     public HBox buildCandidatesHBox() {
@@ -74,7 +68,7 @@ public class VotingUserInterface extends BorderPane {
         //Currently I have images saved to a file and I am painting them onto rectangles which can be displayed
         //This is for two reasons: this way we can have onclick options for the images and we aren't loading from a URL like in a regular image object
         Image image = new Image(pic);
-        Rectangle display = new Rectangle(600, 500);
+        Rectangle display = new Rectangle(500, 400);
         ImagePattern ip = new ImagePattern(image);
         display.setFill(ip);
         display.setStroke(Color.BLACK);
@@ -102,12 +96,12 @@ public class VotingUserInterface extends BorderPane {
     public HBox buildVotingButtons() {
         HBox votingButtonsHolder = new HBox();
         //build other buttons and set font size
-        Button explainSpoilingButton = new Button("What is Spoiling");
+        Button explainSpoilingButton = new Button("Spoiling Explanation");
         explainSpoilingButton.setFont(new Font(20));
         explainSpoilingButton.setOnMouseClicked((e) -> {
-            this.explainSpoiling();
+            this.toggleExplainSpoiling();
         });
-        
+
         Button spoilVoteButton = new Button("Spoil my Vote");
         spoilVoteButton.setFont(new Font(20));
         Button castVoteButton = new Button("Cast my Vote");
@@ -140,11 +134,28 @@ public class VotingUserInterface extends BorderPane {
         return logoutButtonHolder;
     }
 
-    public void explainSpoiling() {
-       VBox vb = ((VBox)this.getBottom());
-       Text text = ((Text)vb.getChildren().get(0));
-       text.setText("What makes this election process verifiable is your ability to spoil your vote. When you spoil your vote it will no longer be counted by the computer. However, you will be shown how the computer interpreted your vote. This is meant as a safeguard against potential interference with the voting process. Spoiling the vote allows you to remain confident that your ballot is remaining untampered. To spoil your vote simple press the spoil my vote button. However, you will need to reselect a candidate and vote again if you spoil your vote since it will no longer be counted.");
-       
+    public void toggleExplainSpoiling() {
+        if (this.explainedSpoiling == false) {
+            //Build a paragraph explanation, format it, put it in a VBox for margins, then add it to the bottom of the borderPane .
+            Text whatIsSpoiling = new Text(20, 40, "What makes this election process verifiable is your ability to spoil your vote. When you spoil your vote it will no longer be counted by the computer. However, you will be shown how the computer interpreted your vote. This is meant as a safeguard against potential interference with the voting process. Spoiling the vote allows you to remain confident that your ballot is remaining untampered. To spoil your vote simple press the spoil my vote button. However, you will need to reselect a candidate and vote again if you spoil your vote since it will no longer be counted. To close this message please click the what is spoiling explanation button again");
+            whatIsSpoiling.setFont(new Font(20));
+            whatIsSpoiling.setWrappingWidth(1000);
+            whatIsSpoiling.setTextAlignment(TextAlignment.CENTER);
+
+            VBox vb = new VBox();
+            vb.getChildren().add(whatIsSpoiling);
+            vb.setAlignment(Pos.CENTER);
+            vb.setMargin(whatIsSpoiling, new Insets(0,0,100,0));
+            
+            //add to borderPane and center
+            this.setBottom(vb);
+            this.setAlignment(this.getBottom(), Pos.CENTER);
+            
+            this.explainedSpoiling = true;
+        } else if (this.explainedSpoiling == true) {
+            this.setBottom(null);//this is the method for clearing a region. When it is null no space is allocated. 
+            this.explainedSpoiling = false;
+        }
     }
 
 }

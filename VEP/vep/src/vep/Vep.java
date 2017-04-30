@@ -40,11 +40,13 @@ public class Vep extends Application {
     }
 
     public void openVotingUserInterface() {
+        //build proper scene and put it in place. Garbage collector will kill off the old one
         BorderPane root = new VotingUserInterface(this);
         scene.setRoot(root);
     }
 
     public void openLoginUserInterface() {
+        //build proper scene and put it in place. Garbage collector will kill off the old one
         BorderPane root = new LoginUserInterface(this);
         scene.setRoot(root);
     }
