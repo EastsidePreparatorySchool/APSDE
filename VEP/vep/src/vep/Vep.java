@@ -63,6 +63,7 @@ public class Vep extends Application {
         //String cmd = (System.getProperty("user.dir").toLowerCase()).replace("C:/", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe" + (System.getProperty("user.dir").toLowerCase()).replace("C:/", " ");
         String cmd = (System.getProperty("user.dir") ).replace("C:", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R 2977 WaltzerAdam 1";
 
+
         System.out.println(cmd);
         Runtime r = Runtime.getRuntime();
         Process pr = r.exec(cmd);
