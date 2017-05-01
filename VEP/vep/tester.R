@@ -6,7 +6,7 @@ print("starting")
 print("ending")
 
 #
-# Henry Samuelson
+# Henry Samuelson 4/25/17
 #
 #Reading CSV and returning data
 print(getwd())
@@ -19,7 +19,8 @@ votes <- read.csv("votesTEMP.csv")
 
 #Check if ID and name exsist and match
 idprocess <- function(idq, nameq, votingID){
-
+  print("Starting funct call")
+  print(typeof(votingID))
   final <- numeric(0)
  
   #check if id exsists in order not to mess up the subset()
@@ -29,15 +30,19 @@ idprocess <- function(idq, nameq, votingID){
       idexsists <- 1
     }
   }
-  
+  print("forloop1")
   if(idexsists != 1) {
     return("NoID")
   }
   if(tryCatch( subset(dataBase, dataBase$id == idq)$name == nameq)) {
     #Cast ballot
-    if((subset(dataBase, dataBase$id == idq)$hasVoted == 0) && votingID != 0){
-      print("hit int 1")
-      votes[votingID] = votes[votingID] + 1
+    print("First cathc")
+    if(as.double(subset(dataBase, dataBase$id == idq)$hasvoted) == 0){
+      if(as.numeric(votingID) != as.numeric(0)) {
+        print("hit int 1")
+        votes[as.numeric(votingID)] = votes[as.numeric(votingID)] + 1
+      }
+      
       
       #user has voted change has voted column
       dataBase[subset(dataBase, dataBase$id == idq)$easyIndex, ]$hasvoted = 1
