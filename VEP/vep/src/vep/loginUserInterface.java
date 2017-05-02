@@ -98,7 +98,10 @@ public class LoginUserInterface extends BorderPane {
             System.out.println("name: "+ FirstName + " " + LastName);
             System.out.println("ID: " + ID);
             
+            //HenrysCode.checkID(ID,LastName,FirstName);
+            
             this.vep.openVotingUserInterface();
+           
         });
         
         //add to hbox and format
