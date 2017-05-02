@@ -13,15 +13,15 @@ import java.util.Random;
  *
  * @author snovik
  */
-public class ElectionComputer extends Computer{
+public class ElectionComputer extends Computer {
 
     private ArrayList<Ballot> List = new ArrayList<Ballot>(); 
     
-    public ElectionComputer(BigInteger c, BigInteger n, BigInteger g) {
+    public ElectionComputer(BigInteger c, BigInteger n, BigInteger e) {
         //First thing when the election starts up, it gets these three public numbers it needs
-        this.c = c;
-        this.n = n;
-        this.g = g;
+        this.c = c; //Constant for padding
+        this.n = n; //Public key
+        this.e = e; //Public key
     }
     
     public Ballot EncryptBallot(BigInteger vote) {
@@ -34,21 +34,20 @@ public class ElectionComputer extends Computer{
          BigInteger randomNumber = new BigInteger(50, generator);
          
          BigInteger z = this.c.multiply(randomNumber);
-         BigInteger x = z.add(vote);
+         BigInteger m = z.add(vote); //Padded message
          
-         BigInteger encrypted = this.g.modPow(x, this.n);
+         BigInteger cipherText = m.modPow(this.n, this.e);
          
-         Ballot ballot = new Ballot(encrypted, x);
+         Ballot ballot = new Ballot(cipherText, m);
          
          return ballot;
          //this is a slight problem because the person gets to see x, but they still can't prove anything.... leave this as is for now
     }
     
     public BigInteger SpoilBallot(Ballot toSpoil) {
-        //takes a ballot and returns its x
-        //everyone knows g and n, so now they can take g to the x given to them mod n and make sure it was the encryption on their ballot before they spoiled it (on public computer)
-        BigInteger x = toSpoil.getX();
-        return x;
+        //Return the padded message M which a ballot contains
+        BigInteger m = toSpoil.getM();
+        return m;
     }
     
     public void CastBallot(Ballot toCast) {             
@@ -66,7 +65,7 @@ public class ElectionComputer extends Computer{
         //if 1, second candidate's
         //publish the tally as an 'Election Result' object
         for (Ballot i: this.List) {
-            BigInteger x = i.getX();
+            BigInteger x = i.getM();
             BigInteger vote = x.mod(this.c);
             
             if (vote == BigInteger.valueOf(0)) {
@@ -93,7 +92,7 @@ public class ElectionComputer extends Computer{
         //publish the x's, once again for the public's use
         BigInteger Sum = new BigInteger("0");
         for (Ballot i: this.List) {
-            Sum = Sum.add(i.getX());
+            Sum = Sum.add(i.getM());
         }
         return Sum;
     }

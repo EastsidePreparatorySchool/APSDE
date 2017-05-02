@@ -22,23 +22,30 @@ public class ElectionVerifier {
     
     //Could also have an election config class
     
+    private static final BigInteger one = new BigInteger("1");
     
     public static void main(String[] args) {
         // TODO code application logic here
         
         //the following code generates my large numbers that will be used in encryption and are available to the public
+        //This is kind of a hack. We are treating n and g as the public key pair used by RSA algorithms
+        //Read more about RSA encryption at: https://en.wikipedia.org/wiki/RSA_(cryptosystem)#Operation
         Random r = new Random();
-        BigInteger n = new BigInteger(50, r);
-        BigInteger g = new BigInteger(50, r);
-        BigInteger C = new BigInteger("1000");
+        BigInteger p = new BigInteger(50, r);
+        BigInteger q = new BigInteger(50, r);
+        BigInteger c = new BigInteger("1000"); //This number is just used to pad the vote
         
+        BigInteger n = p.multiply(q);
+        BigInteger lambda = lcm(p.subtract(one), q.subtract(one));
+        BigInteger e = coprime(lambda, r);
         
+        BigInteger d = e.modInverse(lambda);
         
         //everything bellow here is my test case
         
         //create the election and public computers
-        ElectionComputer EC = new ElectionComputer(C, n, g);
-        PublicComputer PC = new PublicComputer(C, n, g);
+        ElectionComputer EC = new ElectionComputer(c, n, e);
+        PublicComputer PC = new PublicComputer(c, n, e);
         
         //create Example Ballot 1 and encrypt it
         BigInteger exampleVote = new BigInteger("0"); //this is a vote for Candidate 1, you can either vote 0 or 1
@@ -93,11 +100,24 @@ public class ElectionVerifier {
     
     public static void printBallot(Ballot b) {
         System.out.println(b.getMainBallot());
-        System.out.println(b.getX());
+        System.out.println(b.getM());
     }
-
-
-
     
-
+    //I didn't want to redo the math for LCM, so it's here for readability
+    private static BigInteger lcm(BigInteger p, BigInteger q) {
+        BigInteger gcd = p.gcd(q); //return GCD
+        
+        return p.divide(gcd.multiply(q)); //Return LCM of p and q
+    }
+    
+    //Randomly generate a BigInteger, check if it is coprime to lambda, and return it if so
+    private static BigInteger coprime(BigInteger lambda, Random r) {
+        BigInteger coprime;
+        
+        do {
+            coprime = new BigInteger(25, r);
+        } while (!coprime.gcd(lambda).equals(one));
+        
+        return coprime;
+    }
 }
