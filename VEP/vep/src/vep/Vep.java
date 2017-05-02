@@ -30,6 +30,9 @@ import java.util.ArrayList;
 public class Vep extends Application {
 
     Scene scene;
+    public String FirstName= null;
+    public String LastName = null;
+    public String ID = null;
 
     @Override
     public void start(Stage primaryStage) {
@@ -78,7 +81,7 @@ public class Vep extends Application {
 //        }
     }
 
-    public static boolean IDChecker(String ID, String Lastname, String Firstname, String Vote) throws IOException {
+    public static int IDChecker(String ID, String Lastname, String Firstname, String Vote) throws IOException {
 
         String cmd = (System.getProperty("user.dir")).replace("C:", " ") + "\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R " + ID + " " + Lastname + Firstname + " "+Vote;
         System.out.println(cmd);
@@ -93,14 +96,12 @@ public class Vep extends Application {
         while ((s = stdInput.readLine()) != null) {
             System.out.println(s);
             if (s.equals("[1] 1")) {
-                
-                System.out.println("flag");
-                return true;
+                return 1;
+            }else if(s.equals("[1] 0")){
+                return 0;
             }
         }
-
-        return false;
-
+        return-1;
     }
 
 }

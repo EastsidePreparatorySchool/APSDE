@@ -29,14 +29,16 @@ import javafx.scene.text.TextAlignment;
 public class LoginUserInterface extends BorderPane {
 
     Vep vep;
-    String FirstName= null;
-    String LastName = null;
-    String ID = null;
+    
 
     LoginUserInterface(Vep v) {
-        super(); //build border pane
+         super(); //build border pane
+        
+       
         this.vep = v;//this is so that we will have access to the main scene rather than needing to open another one
-
+        vep.FirstName =null;
+        vep.LastName =null;
+        vep.ID = null;
         //build the vboxes and hbox which will hold all relevant fields
         VBox instructions = buildInstructions();
         VBox textFields = buildTextFields();
@@ -93,24 +95,24 @@ public class LoginUserInterface extends BorderPane {
         loginButton.setFont(new Font(20));
 
         loginButton.setOnMouseClicked((e) -> {
-            FirstName = firstName.getText();
-            LastName = lastName.getText();
-            ID =studentId.getText();
+            vep.FirstName = firstName.getText();
+            vep.LastName = lastName.getText();
+            vep.ID =studentId.getText();
 
-            System.out.println("name: " + FirstName + " " + LastName);
-            System.out.println("ID: " + ID);
-            boolean isgood = false;
+            System.out.println("name: " + vep.FirstName + " " + vep.LastName);
+            System.out.println("ID: " + vep.ID);
+            int isgood = -1;
             try {
-                isgood = Vep.IDChecker(ID, LastName, FirstName, "0");
+                isgood = Vep.IDChecker(vep.ID, vep.LastName, vep.FirstName, "0");
             } catch (IOException ex) {
                 Logger.getLogger(LoginUserInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (isgood) {
+            if (isgood==1) {
 
                 this.vep.openVotingUserInterface();
 
             } else {
-                Text Error = new Text(5, 5, "ERROR! You have already voted or name does not match your Student ID.");
+                Text Error = new Text(5, 5, "ERROR! Name does not match your Student ID.");
                 Error.setFont(new Font(20));
                 Error.setTextAlignment(TextAlignment.CENTER);
                 VBox vb = new VBox();
