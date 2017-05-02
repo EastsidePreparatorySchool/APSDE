@@ -58,7 +58,6 @@ public class Vep extends Application {
      */
     public static void main(String[] args) throws IOException {
         launch(args);
-        // ===== HENRYS CODE DO NOT TOUCH (for now)=====
         System.out.println("hellow world");
         //Fartingaroundmain.path;
         System.out.println(System.getProperty("user.dir").toLowerCase());

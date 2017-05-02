@@ -102,13 +102,21 @@ public class LoginUserInterface extends BorderPane {
         loginButton.setOnMouseClicked((e) -> {
             System.out.println("name: "+ FirstName + " " + LastName);
             System.out.println("ID: " + ID);
+            boolean isgood = false;
             try {
-                boolean isgood = Vep.IDChecker(ID, LastName, FirstName);
+                 isgood = Vep.IDChecker(ID, LastName, FirstName);
             } catch (IOException ex) {
                 Logger.getLogger(LoginUserInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
+            if(isgood){
+                this.vep.openVotingUserInterface();
+            }else{
+                Text Error = new Text(20, 40, "ERROR! You have already voted or name does not match your Student ID.");
+                Error.setFont(new Font(40));
+                Error.setWrappingWidth(1000);
+                Error.setTextAlignment(TextAlignment.CENTER);
+            }
             
-            this.vep.openVotingUserInterface();
            
         });
         
