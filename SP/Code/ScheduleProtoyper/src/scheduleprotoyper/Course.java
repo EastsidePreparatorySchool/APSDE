@@ -1,5 +1,6 @@
 package scheduleprotoyper;
 
+import java.util.ArrayList;
 import javafx.scene.paint.Color;
 import static scheduleprotoyper.SchedulePrototyper.MasterContext;
 /**
@@ -22,7 +23,7 @@ public class Course {
     //UIx and UIy refer to a future UI coordinate system to be made by Justice.
     private boolean grayedOut;
 
-    Course(String input) {
+    Course(ArrayList<String> input) {
         //String format: period, grades allowed, class name, teacher, credit type *break*
         //parse those strings here later
 

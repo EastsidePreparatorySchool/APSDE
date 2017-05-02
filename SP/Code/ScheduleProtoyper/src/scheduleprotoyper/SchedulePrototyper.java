@@ -1,5 +1,6 @@
 package scheduleprotoyper;
 
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -21,7 +22,7 @@ public class SchedulePrototyper extends Application {
         Canvas canvas = new Canvas(400, 400);
         root.getChildren().add(canvas);
         MasterContext = canvas.getGraphicsContext2D();
-        Course testCourse = new Course("placeholder string");
+        Course testCourse = new Course(new ArrayList<>());
         Scene scene = new Scene(root, 300, 250);
         primaryStage.setTitle("Schedule Prototyper");
         primaryStage.setScene(scene);
