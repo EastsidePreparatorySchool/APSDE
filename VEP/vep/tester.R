@@ -1,4 +1,4 @@
-setwd("C:/Users/HSamuelson/Documents/GitHub/APSDE/VEP/vep/")
+# setwd("C:/Users/HSamuelson/Documents/GitHub/APSDE/VEP/vep/")
 args <- commandArgs(trailingOnly = TRUE)
 #rnorm(n=as.numeric(args[1]), mean=as.numeric(args[2]))
 print("starting")
@@ -48,7 +48,7 @@ idprocess <- function(idq, nameq, votingID){
       dataBase[subset(dataBase, dataBase$id == idq)$easyIndex, ]$hasvoted = 1
     }
     return("yah")
-    #sssssprint("y")
+    #print("y")
     
   } else{
     return("nah")

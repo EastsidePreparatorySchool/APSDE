@@ -21,6 +21,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author HSamuelson
@@ -61,9 +63,25 @@ public class Vep extends Application {
         //Fartingaroundmain.path;
         System.out.println(System.getProperty("user.dir").toLowerCase());
         //String cmd = (System.getProperty("user.dir").toLowerCase()).replace("C:/", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe" + (System.getProperty("user.dir").toLowerCase()).replace("C:/", " ");
+       // String cmd = (System.getProperty("user.dir") ).replace("C:", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R 2977 WaltzerAdam 1";
+
+
+//        System.out.println(cmd);
+//        Runtime r = Runtime.getRuntime();
+//        Process pr = r.exec(cmd);
+//
+//        BufferedReader stdInput = new BufferedReader(
+//                new InputStreamReader(pr.getInputStream()));
+//
+//        String s;
+//
+//        while ((s = stdInput.readLine()) != null) {
+//            System.out.println(s);
+//        }
+    }
+    public static String[] henrycode(String ID, String LastName, String Firstname) throws IOException{
+        String[] data = new String[3];
         String cmd = (System.getProperty("user.dir") ).replace("C:", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R 2977 WaltzerAdam 1";
-
-
         System.out.println(cmd);
         Runtime r = Runtime.getRuntime();
         Process pr = r.exec(cmd);
@@ -76,6 +94,7 @@ public class Vep extends Application {
         while ((s = stdInput.readLine()) != null) {
             System.out.println(s);
         }
+        return data;
     }
 
 }
