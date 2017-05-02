@@ -92,7 +92,7 @@ public class Vep extends Application {
 
         while ((s = stdInput.readLine()) != null) {
             System.out.println(s);
-            if (s.compareTo("1")==0) {
+            if (s.equals("[1] 1")) {
                 
                 System.out.println("flag");
                 return true;
