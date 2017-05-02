@@ -29,9 +29,9 @@ import javafx.scene.text.TextAlignment;
 public class LoginUserInterface extends BorderPane {
 
     Vep vep;
-    public String FirstName = null;
-    public String LastName = null;
-    public String ID = null;
+    String FirstName= null;
+    String LastName = null;
+    String ID = null;
 
     LoginUserInterface(Vep v) {
         super(); //build border pane
@@ -40,13 +40,13 @@ public class LoginUserInterface extends BorderPane {
         //build the vboxes and hbox which will hold all relevant fields
         VBox instructions = buildInstructions();
         VBox textFields = buildTextFields();
-        HBox buttonHolder = buildLoginButton();
+        //       HBox buttonHolder = buildLoginButton();
 
         //add vboxes to relevant locations
         this.setTop(instructions);
         this.setCenter(textFields);
         this.setMargin(this.getCenter(), new Insets(0, 200, 0, 200));
-        this.setBottom(buttonHolder);
+        //       this.setBottom(buttonHolder);
     }
 
     public VBox buildInstructions() {
@@ -73,77 +73,120 @@ public class LoginUserInterface extends BorderPane {
         TextField firstName = new TextField("First Name");
         firstName.setMaxWidth(300);
         firstName.setFont(new Font(20));
-        FirstName = firstName.getText();
+
 
         TextField lastName = new TextField("Last Name");
         lastName.setMaxWidth(300);
         lastName.setFont(new Font(20));
-        LastName = lastName.getText();
 
         TextField studentId = new TextField("Student Id");
         studentId.setMaxWidth(300);
         studentId.setFont(new Font(20));
-        ID = studentId.getText();
 
         //add to vbox and do a little formatting
         textFields.getChildren().addAll(firstName, lastName, studentId);
         textFields.setAlignment(Pos.CENTER);
         textFields.setSpacing(20);
+        // HBox buttonHolder = new HBox();
+        //create button for login and add to HBox. FK this is the button who's lambda you need to write to call samuelson's code
+        Button loginButton = new Button("Log In");
+        loginButton.setFont(new Font(20));
+
+        loginButton.setOnMouseClicked((e) -> {
+            FirstName = firstName.getText();
+            LastName = lastName.getText();
+            ID =studentId.getText();
+
+            System.out.println("name: " + FirstName + " " + LastName);
+            System.out.println("ID: " + ID);
+            boolean isgood = false;
+            try {
+                isgood = Vep.IDChecker(ID, LastName, FirstName, "0");
+            } catch (IOException ex) {
+                Logger.getLogger(LoginUserInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (isgood) {
+
+                this.vep.openVotingUserInterface();
+
+            } else {
+                Text Error = new Text(5, 5, "ERROR! You have already voted or name does not match your Student ID.");
+                Error.setFont(new Font(20));
+                Error.setTextAlignment(TextAlignment.CENTER);
+                VBox vb = new VBox();
+                vb.getChildren().add(Error);
+                vb.setAlignment(Pos.CENTER);
+                vb.setMargin(Error, new Insets(0, 0, 100, 0));
+
+                //add to borderPane and center
+                this.setBottom(vb);
+                this.setAlignment(this.getBottom(), Pos.CENTER);
+
+                //                   buildLoginButton();
+            }
+
+        }
+        );
+
+        //add to hbox and format
+        textFields.getChildren().add(loginButton);
+        textFields.setAlignment(Pos.CENTER);
+        textFields.setMargin(loginButton, new Insets(0, 0, 100, 0));
 
         return textFields;
     }
 
-    public HBox buildLoginButton() {
-        HBox buttonHolder = new HBox();
-        //create button for login and add to HBox. FK this is the button who's lambda you need to write to call samuelson's code
-        Button loginButton = new Button("Log In");
-        loginButton.setFont(new Font(20));
-        
-        
-            loginButton.setOnMouseClicked((e) -> {
-                
-                System.out.println("name: " + FirstName + " " + LastName);
-                System.out.println("ID: " + ID);
-                boolean isgood = false;
-                try {
-                    isgood = Vep.IDChecker(ID, LastName, FirstName);
-                } catch (IOException ex) {
-                    Logger.getLogger(LoginUserInterface.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                if (isgood) {
-
-                    this.vep.openVotingUserInterface();
-                    final boolean Flag = true;
-                    
-                } else {
-                    Text Error = new Text(5, 5, "ERROR! You have already voted or name does not match your Student ID.");
-                    Error.setFont(new Font(20));
-                    Error.setTextAlignment(TextAlignment.CENTER);
-                    VBox vb = new VBox();
-                    vb.getChildren().add(Error);
-                    vb.setAlignment(Pos.CENTER);
-                    vb.setMargin(Error, new Insets(0, 0, 300, 0));
-
-                    //add to borderPane and center
-                    this.setBottom(vb);
-                    this.setAlignment(this.getBottom(), Pos.CENTER);
-                    
-                    buildLoginButton();
-
-                    
-                    
-                }
-
-            }
-                    
-            );
-
-        
-        //add to hbox and format
-        buttonHolder.getChildren().add(loginButton);
-        buttonHolder.setAlignment(Pos.CENTER);
-        buttonHolder.setMargin(loginButton, new Insets(0, 0, 100, 0));
-
-        return buttonHolder;
-    }
+//    public HBox buildLoginButton() {
+//        HBox buttonHolder = new HBox();
+//        //create button for login and add to HBox. FK this is the button who's lambda you need to write to call samuelson's code
+//        Button loginButton = new Button("Log In");
+//        loginButton.setFont(new Font(20));
+//        
+//        
+//            loginButton.setOnMouseClicked((e) -> {
+//                
+//                System.out.println("name: " + FirstName + " " + LastName);
+//                System.out.println("ID: " + ID);
+//                boolean isgood = false;
+//                try {
+//                    isgood = Vep.IDChecker(ID, LastName, FirstName);
+//                } catch (IOException ex) {
+//                    Logger.getLogger(LoginUserInterface.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//                if (isgood) {
+//
+//                    this.vep.openVotingUserInterface();
+//                    final boolean Flag = true;
+//                    
+//                } else {
+//                    Text Error = new Text(5, 5, "ERROR! You have already voted or name does not match your Student ID.");
+//                    Error.setFont(new Font(20));
+//                    Error.setTextAlignment(TextAlignment.CENTER);
+//                    VBox vb = new VBox();
+//                    vb.getChildren().add(Error);
+//                    vb.setAlignment(Pos.CENTER);
+//                    vb.setMargin(Error, new Insets(0, 0, 300, 0));
+//
+//                    //add to borderPane and center
+//                    this.setBottom(vb);
+//                    this.setAlignment(this.getBottom(), Pos.CENTER);
+//                    
+//                    buildLoginButton();
+//
+//                    
+//                    
+//                }
+//
+//            }
+//                    
+//            );
+//
+//        
+//        //add to hbox and format
+//        buttonHolder.getChildren().add(loginButton);
+//        buttonHolder.setAlignment(Pos.CENTER);
+//        buttonHolder.setMargin(loginButton, new Insets(0, 0, 100, 0));
+//
+//        return buttonHolder;
+//    }
 }
