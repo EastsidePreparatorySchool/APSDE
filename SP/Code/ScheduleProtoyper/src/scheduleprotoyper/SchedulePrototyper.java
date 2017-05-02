@@ -23,6 +23,9 @@ public class SchedulePrototyper extends Application {
         primaryStage.setTitle("Schedule Prototyper");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        
+        
     }
 
     /**
@@ -30,6 +33,7 @@ public class SchedulePrototyper extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        
     }
     
 }

@@ -20,7 +20,12 @@ public class FileReader {
                 //Get the scanner instance
                 scanner = new Scanner(new File("filename.csv"));
                 //Use Delimiter as COMMA
-                
+                while(scanner.hasNext()){
+                //read single line, put in string
+                String data = scanner.next();
+                System.out.println(data + "***");
+
+            }
             }
             catch (FileNotFoundException fe) 
             {
