@@ -78,9 +78,9 @@ public class Vep extends Application {
 //            System.out.println(s);
 //        }
     }
-    public static boolean IDChecker(String ID, String LastName, String Firstname) throws IOException{
+    public static boolean IDChecker(String ID, String Lastname, String Firstname) throws IOException{
         
-        String cmd = (System.getProperty("user.dir") ).replace("C:", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R 2977 WaltzerAdam 1";
+        String cmd = (System.getProperty("user.dir") ).replace("C:", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R "+ID+" "+Lastname+Firstname+" 0";
         System.out.println(cmd);
         Runtime r = Runtime.getRuntime();
         Process pr = r.exec(cmd);
@@ -92,8 +92,13 @@ public class Vep extends Application {
 
         while ((s = stdInput.readLine()) != null) {
             System.out.println(s);
+            if(s.equals("1")){
+            return true;
         }
+        }
+       
         return false;
+        
     }
 
 }
