@@ -5,7 +5,10 @@
  */
 package vep;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -99,8 +102,11 @@ public class LoginUserInterface extends BorderPane {
         loginButton.setOnMouseClicked((e) -> {
             System.out.println("name: "+ FirstName + " " + LastName);
             System.out.println("ID: " + ID);
-            ArrayList data = new ArrayList();
-            Vep.henrycode(ID, LastName, FirstName);
+            try {
+                boolean isgood = Vep.IDChecker(ID, LastName, FirstName);
+            } catch (IOException ex) {
+                Logger.getLogger(LoginUserInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             this.vep.openVotingUserInterface();
            

@@ -79,8 +79,8 @@ public class Vep extends Application {
 //            System.out.println(s);
 //        }
     }
-    public static String[] henrycode(String ID, String LastName, String Firstname) throws IOException{
-        String[] data = new String[3];
+    public static boolean IDChecker(String ID, String LastName, String Firstname) throws IOException{
+        
         String cmd = (System.getProperty("user.dir") ).replace("C:", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R 2977 WaltzerAdam 1";
         System.out.println(cmd);
         Runtime r = Runtime.getRuntime();
@@ -94,7 +94,7 @@ public class Vep extends Application {
         while ((s = stdInput.readLine()) != null) {
             System.out.println(s);
         }
-        return data;
+        return false;
     }
 
 }
