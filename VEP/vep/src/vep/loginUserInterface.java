@@ -5,6 +5,7 @@
  */
 package vep;
 
+import java.util.ArrayList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -81,6 +82,7 @@ public class LoginUserInterface extends BorderPane {
         studentId.setFont(new Font(20));
         ID = studentId.getText();
         
+        
         //add to vbox and do a little formatting
         textFields.getChildren().addAll(firstName, lastName, studentId);
         textFields.setAlignment(Pos.CENTER);
@@ -97,8 +99,8 @@ public class LoginUserInterface extends BorderPane {
         loginButton.setOnMouseClicked((e) -> {
             System.out.println("name: "+ FirstName + " " + LastName);
             System.out.println("ID: " + ID);
-            
-            //HenrysCode.checkID(ID,LastName,FirstName);
+            ArrayList data = new ArrayList();
+            Vep.henrycode(ID, LastName, FirstName);
             
             this.vep.openVotingUserInterface();
            
