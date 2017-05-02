@@ -25,6 +25,9 @@ import javafx.scene.text.TextAlignment;
 public class LoginUserInterface extends BorderPane {
 
     Vep vep;
+    public String FirstName = null;
+    public String LastName = null;
+    public String ID = null;
 
     LoginUserInterface(Vep v) {
         super(); //build border pane
@@ -43,6 +46,7 @@ public class LoginUserInterface extends BorderPane {
     }
 
     public VBox buildInstructions() {
+        
         VBox instructions = new VBox();
         //build explanation of instructions at the top of the page and add it into a vbox
         Text infoBox = new Text(20, 40, "Welcome to the Verifiable Election Booth! Please note that in this election process we value your anonymity. This voting process is designed to ensure that nobody can discern who you voted for. It achieves this through encryption, compartmentalization and your ability to spoil the vote, which will be explained later. For now, to begin voting please enter your first name, last name and student id below. If you do not recall your student id please contact your advisor or consult your student id card.");
@@ -65,12 +69,17 @@ public class LoginUserInterface extends BorderPane {
         TextField firstName = new TextField("First Name");
         firstName.setMaxWidth(300);
         firstName.setFont(new Font(20));
+        FirstName = firstName.getText();
+        
         TextField lastName = new TextField("Last Name");
         lastName.setMaxWidth(300);
-        lastName.setFont(new Font(20));
+        lastName.setFont(new Font(20));        
+        LastName = lastName.getText();
+        
         TextField studentId = new TextField("Student Id");
         studentId.setMaxWidth(300);
         studentId.setFont(new Font(20));
+        ID = studentId.getText();
         
         //add to vbox and do a little formatting
         textFields.getChildren().addAll(firstName, lastName, studentId);
@@ -86,7 +95,9 @@ public class LoginUserInterface extends BorderPane {
         Button loginButton = new Button("Log In");
         loginButton.setFont(new Font(20));
         loginButton.setOnMouseClicked((e) -> {
-            //this is where you put your code
+            System.out.println("name: "+ FirstName + " " + LastName);
+            System.out.println("ID: " + ID);
+            
             this.vep.openVotingUserInterface();
         });
         
