@@ -55,7 +55,7 @@ public class Vep extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        //launch(args);
+        launch(args);
         // ===== HENRYS CODE DO NOT TOUCH (for now)=====
         System.out.println("hellow world");
         //Fartingaroundmain.path;
