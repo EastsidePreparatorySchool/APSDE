@@ -1,6 +1,7 @@
 package scheduleprotoyper;
 
 import java.util.ArrayList;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import static scheduleprotoyper.SchedulePrototyper.MasterContext;
 /**
@@ -22,6 +23,7 @@ public class Course {
     private int UIy;
     //UIx and UIy refer to a future UI coordinate system to be made by Justice.
     private boolean grayedOut;
+    //This holds the rectangle and the text on top of it.
 
     Course(ArrayList<String> input) {
         //String format: period, grades allowed, class name, teacher, credit type *break*
@@ -34,7 +36,6 @@ public class Course {
         this.period = 'A';
         this.UIy = (int) this.period - 1;
         this.UIx = 0;
-
         //the colors are the same as on the current pdf schedules
         //sorted by period
         switch (this.period) {
@@ -68,7 +69,8 @@ public class Course {
     }
 
     public void erase() {
-        this.color = Color.WHITE;
+        MasterContext.setFill(Color.WHITE);
+        MasterContext.fillRect(this.x, this.y, 200, 150);
     }
 
     public void draw() {
