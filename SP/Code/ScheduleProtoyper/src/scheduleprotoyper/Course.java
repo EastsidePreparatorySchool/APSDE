@@ -1,9 +1,12 @@
 package scheduleprotoyper;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import static scheduleprotoyper.SchedulePrototyper.MasterContext;
+
 /**
  *
  * @author hhale
@@ -25,17 +28,23 @@ public class Course {
     private boolean grayedOut;
     //This holds the rectangle and the text on top of it.
 
-    Course(ArrayList<String> input) {
-        //String format: period, grades allowed, class name, teacher, credit type *break*
-        //parse those strings here later
+    Course(String input) {
 
-        //placeholders below
+        //period,grade-grade,name_of_course,teacher,typeofcredit
+        //D,8-11,Spanish 2,eferguson,Spanish   
+        Pattern p = Pattern.compile("([A-H] | 0),([0-9]+ | [0-9]+-[0-9]+),[a-z]([a-z]+),(.+)");
+        Matcher m = p.matcher(input);
+        if (m.matches()) {
+        };
+        //info on java regexes here
+        //https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html
         this.grade = 9;
-        this.name = "Biology";
+        this.name = "Bio";
         this.teacher = "Waltzer";
         this.period = 'A';
         this.UIy = (int) this.period - 1;
         this.UIx = 0;
+
         //the colors are the same as on the current pdf schedules
         //sorted by period
         switch (this.period) {

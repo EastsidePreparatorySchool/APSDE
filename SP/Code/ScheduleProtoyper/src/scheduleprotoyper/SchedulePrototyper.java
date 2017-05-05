@@ -22,7 +22,7 @@ public class SchedulePrototyper extends Application {
         Canvas canvas = new Canvas(400, 400);
         root.getChildren().add(canvas);
         MasterContext = canvas.getGraphicsContext2D();
-        Course testCourse = new Course(new ArrayList<>());
+        Course testCourse = new Course("lol");
         Scene scene = new Scene(root, 300, 250);
         primaryStage.setTitle("Schedule Prototyper");
         primaryStage.setScene(scene);
