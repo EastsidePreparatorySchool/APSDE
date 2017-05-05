@@ -28,6 +28,8 @@ public class SchedulePrototyper extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         
+        FileReader fr = new FileReader();
+        fr.readFile();
         
         
     }
