@@ -1,46 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package scheduleprotoyper;
 
+import java.util.ArrayList;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
 /**
  *
  * @author hhale 
  */
 public class SchedulePrototyper extends Application {
     
+    public static GraphicsContext MasterContext;
+    
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
         
         StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        
+        Canvas canvas = new Canvas(400, 400);
+        root.getChildren().add(canvas);
+        MasterContext = canvas.getGraphicsContext2D();
+        Course testCourse = new Course(new ArrayList<>());
         Scene scene = new Scene(root, 300, 250);
-        
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Schedule Prototyper");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        
+        
     }
-
     /**
      * @param args the command line arguments
      */
