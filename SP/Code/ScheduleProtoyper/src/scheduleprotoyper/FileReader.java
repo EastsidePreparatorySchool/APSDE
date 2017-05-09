@@ -27,7 +27,7 @@ public class FileReader {
         //create blank list of strings for class objects
             try {
                 //Get the scanner instance
-                URL path = FileReader.class.getResource("rshaw.csv");
+                URL path = FileReader.class.getResource("test.csv");
                 Scanner s = new Scanner(new File(path.getFile()));
                 //skip initialize scanner
                 while(s.hasNextLine()){

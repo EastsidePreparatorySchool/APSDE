@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import static scheduleprotoyper.SchedulePrototyper.MasterContext;
-
 /**
  *
  * @author hhale
