@@ -28,10 +28,7 @@ votes <- read.csv("votesTEMP.csv")
 
 #Check if ID and name exsist and match
 idprocess <- function(idq, nameq, votingID){
-  #print("Starting funct call")
-  #print(typeof(votingID))
-  #final <- c(0,0)
- 
+
   #check if id exsists in order not to mess up the subset()
   idexsists <- 0
   for(i in 1:length(dataBase$id)){
@@ -39,10 +36,11 @@ idprocess <- function(idq, nameq, votingID){
       idexsists <- 1
     }
   }
-  #print("forloop1")
+  #If the ID is invalid return
   if(idexsists != 1) {
     return(0)
   }
+  #ew now know the ID is valid so we can proporly try it tp see if the it matches the name
   if(tryCatch( subset(dataBase, dataBase$id == idq)$name == nameq)) {
 
     if(votingID == 0) {
@@ -54,26 +52,23 @@ idprocess <- function(idq, nameq, votingID){
         #print("hit int 1")
         votes[as.numeric(votingID)] = votes[as.numeric(votingID)] + 1
         counter = counter + 1
+        write.csv(votes, file = "votesTEMP.csv")
+        votes <- read.csv("votesTEMP.csv")
       }
       
       
       #user has voted change has voted column
       dataBase[subset(dataBase, dataBase$id == idq)$easyIndex, ]$hasvoted = 1
       counter = counter +1
+      write.csv(dataBase, file = "idDatabase (1).csv")
+      dataBase <- read.csv("idDatabase (1).csv")
       if(counter ==2){
         return(1)
       }
     }
-    #return("yah")
-    #print("y")
-    
   } else{
     return(0)
-  } #print("n")
-  
-  
-
-  
+  } 
 }
   
 
