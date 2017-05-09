@@ -8,6 +8,7 @@ package scheduleprotoyper;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -21,28 +22,28 @@ import java.util.Scanner;
 //CSV is comma separated variable, a type of file in which each line is a 
 public class FileReader {
     public static List readFile(){
-        List<String> listofclasses = new ArrayList<String>();
+        List<String> listOfClasses = new ArrayList<String>();
         //create blank list of strings for class objects
-        Scanner scanner = null;
             try {
                 //Get the scanner instance
-                scanner = new Scanner(new File("filename.csv"));
+                URL path = FileReader.class.getResource("rshaw.csv");
+                Scanner s = new Scanner(new File(path.getFile()));
                 //skip initialize scanner
-                while(scanner.hasNext()){
+                while(s.hasNext()){
                     //read single line, put in string
-                    String data = scanner.next();
-                    listofclasses.add(data);
+                    String data = s.next();
+                    listOfClasses.add(data);
             }
+                s.close();
             }
             //check whether or not the file exists
             catch (FileNotFoundException fe) 
             {
                     fe.printStackTrace();
             }
-            finally
-            {
-                    scanner.close();
+            for (String s : listOfClasses) {
+                System.out.println(s);
             }
-            return(listofclasses);
+            return(listOfClasses);
     }
 }
