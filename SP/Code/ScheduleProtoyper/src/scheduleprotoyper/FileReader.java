@@ -22,16 +22,17 @@ import java.util.Scanner;
 //CSV is comma separated variable, a type of file in which each line is a 
 public class FileReader {
     public static List readFile(){
-        List<String> listOfClasses = new ArrayList<String>();
+        List<String> listOfClasses = new ArrayList<>();
+        List<Course> courses = new ArrayList<>();
         //create blank list of strings for class objects
             try {
                 //Get the scanner instance
                 URL path = FileReader.class.getResource("rshaw.csv");
                 Scanner s = new Scanner(new File(path.getFile()));
                 //skip initialize scanner
-                while(s.hasNext()){
+                while(s.hasNextLine()){
                     //read single line, put in string
-                    String data = s.next();
+                    String data = s.nextLine();
                     listOfClasses.add(data);
             }
                 s.close();
@@ -42,8 +43,9 @@ public class FileReader {
                     fe.printStackTrace();
             }
             for (String s : listOfClasses) {
+                courses.add(new Course(s));
                 System.out.println(s);
             }
-            return(listOfClasses);
+            return courses;
     }
 }
