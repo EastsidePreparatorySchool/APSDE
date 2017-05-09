@@ -51,7 +51,7 @@ public class brightness_contrast {
         if (raster.getNumDataElements() != 1) { // checks if image is greyscale (i.e. only has one color channel)
             throw new IllegalArgumentException();
         }*/
-        if (image.getType() ==  BufferedImage.TYPE_BYTE_GRAY) {
+        if (image.getType() !=  BufferedImage.TYPE_BYTE_GRAY) {
             throw new IllegalArgumentException();
         }
         RescaleOp bright_ro = new RescaleOp(1f, bright_amt, null);
