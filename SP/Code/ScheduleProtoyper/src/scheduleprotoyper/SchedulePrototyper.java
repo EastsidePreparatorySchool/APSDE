@@ -22,16 +22,19 @@ public class SchedulePrototyper extends Application {
         Canvas canvas = new Canvas(400, 400);
         root.getChildren().add(canvas);
         MasterContext = canvas.getGraphicsContext2D();
-        Course testCourse = new Course("D,8-11,Spanish 2,eferguson,Spanish");
         Scene scene = new Scene(root, 300, 250);
         primaryStage.setTitle("Schedule Prototyper");
         primaryStage.setScene(scene);
         primaryStage.show();
         
         FileReader fr = new FileReader();
-        fr.readFile();
-        
-        
+        ArrayList<Course> courses = fr.readFile();
+        //display prereq ui
+        //generate course set
+        //filter course set using prereq data
+        //display the courses remaining in Justice's UI
+        //use prereq data to get current credit years
+        //
     }
     /**
      * @param args the command line arguments
@@ -39,5 +42,4 @@ public class SchedulePrototyper extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
 }

@@ -18,12 +18,11 @@ import java.util.Scanner;
  * @author hmeng
  */
 
-
 //CSV is comma separated variable, a type of file in which each line is a 
 public class FileReader {
-    public static List readFile(){
-        List<String> listOfClasses = new ArrayList<>();
-        List<Course> courses = new ArrayList<>();
+    public ArrayList<Course> readFile(){
+        ArrayList<String> listOfClasses = new ArrayList<>();
+        ArrayList<Course> courses = new ArrayList<>();
         //create blank list of strings for class objects
             try {
                 //Get the scanner instance
