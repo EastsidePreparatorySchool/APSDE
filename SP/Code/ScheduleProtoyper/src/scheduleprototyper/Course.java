@@ -1,11 +1,11 @@
-package scheduleprotoyper;
+package scheduleprototyper;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import static scheduleprotoyper.SchedulePrototyper.MasterContext;
+import static scheduleprototyper.SchedulePrototyper.MasterContext;
 
 /**
  *
