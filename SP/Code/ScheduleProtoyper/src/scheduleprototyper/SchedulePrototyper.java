@@ -29,9 +29,6 @@ public class SchedulePrototyper extends Application {
         
         FileReader fr = new FileReader();
         ArrayList<Course> courses = fr.readFile();
-        
-        
-        
     }
     /**
      * @param args the command line arguments
