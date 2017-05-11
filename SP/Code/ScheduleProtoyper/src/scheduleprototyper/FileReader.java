@@ -5,7 +5,6 @@
  */
 package scheduleprototyper;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -21,9 +20,9 @@ import java.util.Scanner;
 
 //CSV is comma separated variable, a type of file in which each line is a 
 public class FileReader {
-    public static List readFile(){
-        List<String> listOfClasses = new ArrayList<>();
-        List<Course> courses = new ArrayList<>();
+    public static ArrayList readFile(){
+        ArrayList<String> listOfClasses = new ArrayList<>();
+        ArrayList<Course> courses = new ArrayList<>();
         //create blank list of strings for class objects
             try {
                 //Get the scanner instance
@@ -44,7 +43,6 @@ public class FileReader {
             }
             for (String s : listOfClasses) {
                 courses.add(new Course(s));
-                System.out.println(s);
             }
             return courses;
     }
