@@ -18,7 +18,9 @@ args <- commandArgs(trailingOnly = TRUE)
   #voted already or not. if you have it will return "0". If you havent voted
   #It will change your hasVoted column in IdDatabase, and will add one to the
   #candates column in the votesTEMP.csv file. the program will then return "1".
-#print(getwd())
+
+  #To print final stats id has to == 666 and login has to be "sixsixsix"
+
 dataBase <- read.csv("idDatabase2.csv")
 votes <- read.csv("votesTEMP.csv")
 
@@ -84,10 +86,10 @@ idprocess <- function(idq, nameq, votingID){
       return(1)
     }
     counter <- 0
-    if(as.double(subset(dataBase, dataBase$id == idq)$hasvoted) == 0){
-      if(as.numeric(votingID) != as.numeric(0)) {
-        #print("hit int 1")
-        votes[as.numeric(votingID)] = votes[as.numeric(votingID)] + 1
+    if(as.double(subset(dataBase, dataBase$id == idq)$hasvoted) == 0){ #If the row in hasVoted is 0 where the id in the row is equal to the inputed id.
+      if(as.numeric(votingID) != as.numeric(0)) { #If there is a choce that is not zero, i.e. there is a canadite choice
+                                                  #This is here becasue if the function is called for a initial login a zero will be inputed for the canadate id
+        votes[as.numeric(votingID)] = votes[as.numeric(votingID)] + 1 #Change the row +1 where the id matches input id.
         counter = counter + 1
         write.csv(votes, file = "votesTEMP.csv")
         votes <- read.csv("votesTEMP.csv")
@@ -100,7 +102,7 @@ idprocess <- function(idq, nameq, votingID){
       write.csv(dataBase, file = "idDatabase2.csv")
       dataBase <- read.csv("idDatabase2.csv")
       if(counter ==2){
-        return(1)
+        return(1)  #If this is true that means the vote has been sucessfuly added and users "hasvoted" column has been updated.
       }
     }
   } else{
@@ -109,5 +111,5 @@ idprocess <- function(idq, nameq, votingID){
 }
 
 
-idprocess(args[1], args[2], args[3])
+idprocess(args[1], args[2], args[3])  #Actual function callfor those who dont know R our script starts here.
 
