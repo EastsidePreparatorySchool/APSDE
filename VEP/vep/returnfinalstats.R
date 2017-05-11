@@ -7,10 +7,12 @@
   #ment for Gummere or Briggs sake. 
 
 #Remove this line to run this script from the java program
-setwd('C:/Users/HSamuelson/Documents/GitHub/APSDE/VEP/vep/')
+#setwd('C:/Users/HSamuelson/Documents/GitHub/APSDE/VEP/vep/')
 
-dat <- read.csv("idDatabase (1).csv")
+dat <- read.csv("idDatabase2.csv")
 votes <- read.csv("votesTEMP.csv")
+
+
 
 
 #Calculate percent of votes
