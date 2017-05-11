@@ -5,7 +5,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import static scheduleprototyper.SchedulePrototyper.MasterContext;
 
 /**
  *
@@ -81,21 +80,11 @@ public class Course {
     }
 
     public void erase() {
-        MasterContext.setFill(Color.WHITE);
-        MasterContext.fillRect(this.x, this.y, 200, 150);
+        
     }
 
     public void draw() {
-        //In the future the coordinates should be adjusted here
-        //to draw the courses at their correct sizes instead of 200*200.
-        this.x = this.UIx * 200;
-        this.y = this.UIy * 150;
-        if (this.grayedOut == true) {
-            MasterContext.setFill(this.color.desaturate());
-        } else {
-            MasterContext.setFill(this.color);
-        }
-        MasterContext.fillRect(this.x, this.y, 200, 150);
+        
     }
 
     public void move(int x, int y) {
