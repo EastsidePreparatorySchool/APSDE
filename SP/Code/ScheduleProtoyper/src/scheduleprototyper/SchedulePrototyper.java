@@ -28,7 +28,7 @@ public class SchedulePrototyper extends Application {
         primaryStage.show();
         
         FileReader fr = new FileReader();
-        ArrayList<Course> courses = fr.readFile();
+        ArrayList<Course> courses = fr.readFile("rshaw.csv");
     }
     /**
      * @param args the command line arguments

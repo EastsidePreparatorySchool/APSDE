@@ -32,16 +32,17 @@ public class Course {
 
         //period,grade-grade,name_of_course,teacher,typeofcredit
         //D,8-11,Spanish 2,eferguson,Spanish   
-        Pattern p = Pattern.compile("([A-H]|0),([0-9]+|[0-9]+-[0-9]+),(.+),[a-z]([a-z]+),(.+)");
+        Pattern p = Pattern.compile("([A-H]|0)(-[A-Z]S)?,([0-9]+|[0-9]+-[0-9]+),(.+),[a-z]([a-z]+),(.+)");
         Matcher m = p.matcher(input);
         //info on java regexes here
         //https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html
         if (!m.matches()) {
             System.out.println("Incorrect csv format.");
         } else {
-        this.grade = m.group(2);
-        this.name = m.group(3);
-        this.teacher = m.group(4);
+        this.grade = m.group(3);
+        this.name = m.group(4);
+        System.out.println("Course " + this.name + " good.");
+        this.teacher = m.group(5);
         this.period = m.group(1).toCharArray()[0];
         this.UIy = (int) this.period - 1;
         this.UIx = 0;

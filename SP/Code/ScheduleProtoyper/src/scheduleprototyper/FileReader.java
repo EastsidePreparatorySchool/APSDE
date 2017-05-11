@@ -20,13 +20,13 @@ import java.util.Scanner;
 
 //CSV is comma separated variable, a type of file in which each line is a 
 public class FileReader {
-    public ArrayList readFile(){
+    public ArrayList readFile(String fileName){
         ArrayList<String> listOfClasses = new ArrayList<>();
         ArrayList<Course> courses = new ArrayList<>();
         //create blank list of strings for class objects
             try {
                 //Get the scanner instance
-                URL path = FileReader.class.getResource("rshaw.csv");
+                URL path = FileReader.class.getResource(fileName);
                 Scanner s = new Scanner(new File(path.getFile()));
                 //skip initialize scanner
                 while(s.hasNextLine()){
