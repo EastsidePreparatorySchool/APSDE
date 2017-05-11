@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 //CSV is comma separated variable, a type of file in which each line is a 
 public class FileReader {
-    public static ArrayList readFile(){
+    public ArrayList readFile(){
         ArrayList<String> listOfClasses = new ArrayList<>();
         ArrayList<Course> courses = new ArrayList<>();
         //create blank list of strings for class objects
