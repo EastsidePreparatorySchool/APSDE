@@ -55,7 +55,7 @@ public class LoginUserInterface extends BorderPane {
 
         VBox instructions = new VBox();
         //build explanation of instructions at the top of the page and add it into a vbox
-        Text infoBox = new Text(20, 40, "Welcome to the Verifiable Election Booth! Please note that in this election process we value your anonymity. This voting process is designed to ensure that nobody can discern who you voted for. It achieves this through encryption, compartmentalization and your ability to spoil the vote, which will be explained later. For now, to begin voting please enter your first name, last name and student id below. If you do not recall your student id please contact your advisor or consult your student id card.");
+        Text infoBox = new Text(20, 40, "Welcome to the Verifiable Election Booth! Please note that in this election process we value your anonymity. This voting process is designed to ensure that nobody can discern who you voted for. It achieves this through encryption, compartmentalization and your ability to spoil the vote, which will be explained later. For now, to begin voting please enter your email and password. This password should have been sent to your email earlier today.");
         infoBox.setFont(new Font(20));
         infoBox.setWrappingWidth(600);
         infoBox.setTextAlignment(TextAlignment.CENTER);
@@ -72,21 +72,17 @@ public class LoginUserInterface extends BorderPane {
         VBox textFields = new VBox();
 
         //build the text fields, define their lengths and add them into a vbox
-        TextField firstName = new TextField("First Name");
-        firstName.setMaxWidth(300);
-        firstName.setFont(new Font(20));
+        TextField email = new TextField("Email");
+        email.setMaxWidth(300);
+        email.setFont(new Font(20));
 
 
-        TextField lastName = new TextField("Last Name");
-        lastName.setMaxWidth(300);
-        lastName.setFont(new Font(20));
-
-        TextField studentId = new TextField("Student Id");
-        studentId.setMaxWidth(300);
-        studentId.setFont(new Font(20));
+        TextField password = new TextField("Password");
+        password.setMaxWidth(300);
+        password.setFont(new Font(20));
 
         //add to vbox and do a little formatting
-        textFields.getChildren().addAll(firstName, lastName, studentId);
+        textFields.getChildren().addAll(email, password);
         textFields.setAlignment(Pos.CENTER);
         textFields.setSpacing(20);
         // HBox buttonHolder = new HBox();
@@ -95,9 +91,8 @@ public class LoginUserInterface extends BorderPane {
         loginButton.setFont(new Font(20));
 
         loginButton.setOnMouseClicked((e) -> {
-            vep.FirstName = firstName.getText();
-            vep.LastName = lastName.getText();
-            vep.ID =studentId.getText();
+            vep.FirstName = email.getText();
+            vep.LastName = password.getText();
 
             System.out.println("name: " + vep.FirstName + " " + vep.LastName);
             System.out.println("ID: " + vep.ID);
