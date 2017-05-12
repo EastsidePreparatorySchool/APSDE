@@ -31,7 +31,7 @@ public class SchedulePrototyper extends Application {
         StackPane leftPane = new StackPane(new Label("Left"));
         StackPane rightPane = new StackPane(courseArea); //spacing = 8
         SplitPane splitPane = new SplitPane();
-        courseArea.setOrientation(Orientation.VERTICAL); // sets courseArea inside right splitpane verticle
+        courseArea.setOrientation(Orientation.VERTICAL); // sets courseArea inside right splitpane vertical
 
         ArrayList<ArrayList<Course>> courseCoords = new ArrayList<>();
         for (ArrayList<Course> ca : filteredCourses) {
