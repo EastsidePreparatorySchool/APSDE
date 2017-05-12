@@ -1,5 +1,7 @@
 package scheduleprototyper;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Application;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
@@ -19,21 +21,28 @@ public class ConstrainedSplitPane extends Application {
         StackPane leftPane = new StackPane(new Label("Left"));
         StackPane rightPane = new StackPane(rows); //spacing = 8
         SplitPane splitPane = new SplitPane();
-        rows.setOrientation(Orientation.VERTICAL); // sets rows inside right splitpane verticle
+        rows.setOrientation(Orientation.VERTICAL); // sets rows inside right splitpane verticle      
         
         //why is this not a loop?
-        StackPane a = new StackPane(new Label("A"));
-        StackPane b = new StackPane(new Label("B"));
-        StackPane c = new StackPane(new Label("C"));
-        StackPane d = new StackPane(new Label("D"));
-        StackPane e = new StackPane(new Label("E"));
-        StackPane f = new StackPane(new Label("F"));
-        StackPane g = new StackPane(new Label("G"));
-        StackPane h = new StackPane(new Label("H"));
+        StackPane period1 = new StackPane(new Label("A"));
+        StackPane period2 = new StackPane(new Label("B"));
+        StackPane period3 = new StackPane(new Label("C"));
+        StackPane period4 = new StackPane(new Label("D"));
+        StackPane period5 = new StackPane(new Label("E"));
+        StackPane period6 = new StackPane(new Label("F"));
+        StackPane period7 = new StackPane(new Label("G"));
+        StackPane period8 = new StackPane(new Label("H"));
         
-        a.setMaxHeight(50); //adjusting height of rows
+        period1.setMaxHeight(50);
+        period2.setMaxHeight(50);
+        period3.setMaxHeight(50);
+        period4.setMaxHeight(50);
+        period5.setMaxHeight(50);
+        period6.setMaxHeight(50);
+        period7.setMaxHeight(50);
+        period8.setMaxHeight(50);
         
-        rows.getItems().addAll(a,b,c,d,e,f,g,h);
+        rows.getItems().addAll(period1,period2,period3,period4,period5,period6,period7,period8);
         
         splitPane.getItems().addAll(leftPane, rightPane);
         splitPane.setDividerPositions(0.25);
