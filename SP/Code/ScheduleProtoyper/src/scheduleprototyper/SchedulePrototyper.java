@@ -30,20 +30,20 @@ public class SchedulePrototyper extends Application {
         //this will need to be written to as some function of courses
         ArrayList<ArrayList<Course>> filteredCourses = new ArrayList<>();
 
-        SplitPane courseArea = new SplitPane();
-        //renamed courseArea from "rows"
-        courseArea.setMinHeight(0);
+        SplitPane coursesShown = new SplitPane();
+        //renamed coursesShown from "rows"
+        coursesShown.setMinHeight(0);
         StackPane leftPane = new StackPane(new Label("Left"));
-        StackPane rightPane = new StackPane(courseArea); //spacing = 8
+        StackPane rightPane = new StackPane(coursesShown); //spacing = 8
         SplitPane splitPane = new SplitPane();
-        courseArea.setOrientation(Orientation.VERTICAL); // sets courseArea inside right splitpane vertical
+        coursesShown.setOrientation(Orientation.VERTICAL); // sets coursesShown inside right splitpane vertical
 
-        ArrayList<ArrayList<Course>> courseCoords = new ArrayList<>();
+        ArrayList<ArrayList<Course>> courseTable = new ArrayList<>();
         for (ArrayList<Course> ca : filteredCourses) {
-            courseCoords.add(ca);
+            courseTable.add(ca);
         }
         for (int i=1; i <= 8; i++) {
-            courseArea.getItems().add(new StackPane(new Label(Integer.toString(i))));
+            coursesShown.getItems().add(new StackPane(new Label(Integer.toString(i))));
         }
         
         splitPane.getItems().addAll(leftPane, rightPane);
@@ -71,6 +71,7 @@ public class SchedulePrototyper extends Application {
                     this.courseX--;
                     break;
             }
+            this.updateCoursesShown();
         });
     }
     /**
@@ -79,4 +80,8 @@ public class SchedulePrototyper extends Application {
     public static void main(String[] args) {
         launch(args);
     }    
+    
+    public void updateCoursesShown() {
+        //update coursesShown to reflect the keypress (get new data from courseTable)
+    }
 }
