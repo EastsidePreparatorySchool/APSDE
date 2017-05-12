@@ -8,6 +8,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -18,13 +19,17 @@ import javafx.stage.Stage;
 public class SchedulePrototyper extends Application {
     
     public static GraphicsContext MasterContext;
+    int courseX;
+    int courseY;
     
     @Override
     public void start(Stage primaryStage) {
         
-       ArrayList<ArrayList<Course>> filteredCourses = new ArrayList<>();        
         FileReader fr = new FileReader();
         ArrayList<Course> courses = fr.readFile("rshaw.csv");
+        //this will need to be written to as some function of courses
+        ArrayList<ArrayList<Course>> filteredCourses = new ArrayList<>();
+
         SplitPane courseArea = new SplitPane();
         //renamed courseArea from "rows"
         courseArea.setMinHeight(0);
@@ -47,18 +52,31 @@ public class SchedulePrototyper extends Application {
         //Constrain max size of left component, creates limits to class schedule
         leftPane.maxWidthProperty().bind(splitPane.widthProperty().multiply(0.25)); //0.25 = 25% of screen
 
-        primaryStage.setScene(new Scene(new BorderPane(splitPane), 800, 600));
+        Scene scene = new Scene(new BorderPane(splitPane), 800, 600);
+        primaryStage.setScene(scene);
         primaryStage.show();
+        
+        scene.setOnKeyPressed((KeyEvent event) -> {
+            switch (event.getCode()) {
+                case LEFT:
+                    this.courseX--;
+                    break;
+                case RIGHT:
+                    this.courseX++;
+                    break;
+                case DOWN:
+                    this.courseY++;
+                    break;
+                case UP:
+                    this.courseX--;
+                    break;
+            }
+        });
     }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         launch(args);
-    }
-    
-    public void arrowLeft() {
-        //make updates to CourseArea from CourseCoords
-    }
-    
+    }    
 }
