@@ -36,7 +36,7 @@ public class Vep extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        BorderPane root = new LoginUserInterface(this);
+        BorderPane root = new FinalResultsUserInterface("Maja and Ayush", this);
         scene = new Scene(root, 2000, 1000);
 
         primaryStage.setTitle("EPS Student Body President and Vice President Election 2017");
@@ -53,6 +53,12 @@ public class Vep extends Application {
     public void openLoginUserInterface() {
         //build proper scene and put it in place. Garbage collector will kill off the old one
         BorderPane root = new LoginUserInterface(this);
+        scene.setRoot(root);
+    }
+    
+    public void openFinalResultsUserInterface(String victor) {
+        //build results page and show it
+        BorderPane root = new FinalResultsUserInterface(victor, this);
         scene.setRoot(root);
     }
 
