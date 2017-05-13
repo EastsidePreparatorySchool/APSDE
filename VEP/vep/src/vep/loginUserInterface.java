@@ -59,7 +59,7 @@ public class LoginUserInterface extends BorderPane {
         infoBox.setFont(new Font(20));
         infoBox.setWrappingWidth(600);
         infoBox.setTextAlignment(TextAlignment.CENTER);
-//asdfasdfasdf
+
         //format and place top explanation may need to reformat later
         instructions.getChildren().add(infoBox);
         instructions.setAlignment(Pos.CENTER);
