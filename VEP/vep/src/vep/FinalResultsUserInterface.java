@@ -38,11 +38,16 @@ public class FinalResultsUserInterface extends BorderPane {
         VBox middle = this.buildMidRegionVBox();
         VBox endProgramButtonHolder = this.buildEndProgramButton();
 
-        //add items to correct regions
+        this.getStyleClass().add("pane");
+        header.getStyleClass().add("header");
+        middle.getStyleClass().add("box");
+        
+        //add items to correct regions and format
         this.setTop(header);
+        this.setAlignment(this.getTop(), Pos.CENTER);
         this.setCenter(middle);
         this.setBottom(endProgramButtonHolder);
-
+        this.setAlignment(this.getBottom(), Pos.CENTER);
     }
 
     private VBox buildMidRegionVBox() {
@@ -69,9 +74,9 @@ public class FinalResultsUserInterface extends BorderPane {
         HBox imagesHBox = new HBox();
 
         //build images. NOTE: FK you will need to put in the proper file locations. I cannot access them right now because of github
-        Rectangle image1 = this.buildImage("../../");
-        Rectangle image2 = this.buildImage("../../");
-        Rectangle image3 = this.buildImage("../../");
+        Rectangle image1 = this.buildImage("finalstatimages/pMFvote.png");
+        Rectangle image2 = this.buildImage("finalstatimages/numVotesMF.png");
+        Rectangle image3 = this.buildImage("finalstatimages/votesByGrade.png");
 
         imagesHBox.getChildren().addAll(image1, image2, image3);
         imagesHBox.setSpacing(50);
@@ -82,11 +87,9 @@ public class FinalResultsUserInterface extends BorderPane {
 
     private static Rectangle buildImage(String location) {
         Rectangle display = new Rectangle(500, 400);
-//        Add this code back in once locations are correct and delete my set fill
-//        Image image = new Image(location);
-//        ImagePattern ip = new ImagePattern(image);
-//        display.setFill(ip);
-        display.setFill(Color.GREEN);
+        Image image = new Image(location);
+        ImagePattern ip = new ImagePattern(image);
+        display.setFill(ip);
         display.setStroke(Color.BLACK);
         display.setStrokeWidth(5);
 

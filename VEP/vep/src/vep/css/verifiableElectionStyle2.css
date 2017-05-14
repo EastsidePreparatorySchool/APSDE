@@ -1,11 +1,11 @@
 .pane {
- -fx-background-color: #37392E;
- background-color: #37392E;
+ -fx-background-color: #D16666;
+ background-color:#D16666;
  -fx-font-family: "Times New Roman", Times, serif;
 }
 
 .box {
-    -fx-background-color:#19647E;
+    -fx-background-color:#B6C649;
     -fx-max-width: 1500;   
     max-width: 1500; 
 }
@@ -17,9 +17,9 @@
     -fx-min-width: 500;
 }
 #spoilingExplanation {
-    -fx-background-color: #DDCECD;
-    background-color: #DDCECD;
+    -fx-background-color: #C1C1C1;
+    background-color: #C1C1C1;
 }
 #header {
-    -fx-color: #DDCECD;
+    -fx-color: #C1C1C1;
 }

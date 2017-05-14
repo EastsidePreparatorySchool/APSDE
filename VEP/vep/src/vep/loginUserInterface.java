@@ -29,26 +29,29 @@ import javafx.scene.text.TextAlignment;
 public class LoginUserInterface extends BorderPane {
 
     Vep vep;
-    
 
     LoginUserInterface(Vep v) {
-         super(); // build border pane
-        
-       
+        super(); // build border pane
+
         this.vep = v;//this is so that we will have access to the main scene rather than needing to open another one
-        vep.FirstName =null;
-        vep.LastName =null;
+        vep.FirstName = null;
+        vep.LastName = null;
         vep.ID = null;
         //build the vboxes and hbox which will hold all relevant fields
         VBox instructions = buildInstructions();
         VBox textFields = buildTextFields();
-        //       HBox buttonHolder = buildLoginButton();
+
+        //css for these fields
+        this.getStyleClass().add("pane");
+        instructions.getStyleClass().addAll("spoilingExplanation","box" );
+        textFields.getStyleClass().add("box");
 
         //add vboxes to relevant locations
         this.setTop(instructions);
+        this.setAlignment(this.getTop(), Pos.CENTER);
         this.setCenter(textFields);
         this.setMargin(this.getCenter(), new Insets(0, 200, 0, 200));
-        //       this.setBottom(buttonHolder);
+
     }
 
     public VBox buildInstructions() {
@@ -76,7 +79,6 @@ public class LoginUserInterface extends BorderPane {
         email.setMaxWidth(300);
         email.setFont(new Font(20));
 
-
         TextField password = new TextField("Password");
         password.setMaxWidth(300);
         password.setFont(new Font(20));
@@ -85,8 +87,6 @@ public class LoginUserInterface extends BorderPane {
         textFields.getChildren().addAll(email, password);
         textFields.setAlignment(Pos.CENTER);
         textFields.setSpacing(20);
-        // HBox buttonHolder = new HBox();
-        //create button for login and add to HBox. FK this is the button who's lambda you need to write to call samuelson's code
         Button loginButton = new Button("Log In");
         loginButton.setFont(new Font(20));
 
@@ -102,7 +102,7 @@ public class LoginUserInterface extends BorderPane {
             } catch (IOException ex) {
                 Logger.getLogger(LoginUserInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (isgood==1) {
+            if (isgood == 1) {
 
                 this.vep.openVotingUserInterface();
 
@@ -119,7 +119,6 @@ public class LoginUserInterface extends BorderPane {
                 this.setBottom(vb);
                 this.setAlignment(this.getBottom(), Pos.CENTER);
 
-                //                   buildLoginButton();
             }
 
         }
@@ -132,58 +131,4 @@ public class LoginUserInterface extends BorderPane {
 
         return textFields;
     }
-
-//    public HBox buildLoginButton() {
-//        HBox buttonHolder = new HBox();
-//        //create button for login and add to HBox. FK this is the button who's lambda you need to write to call samuelson's code
-//        Button loginButton = new Button("Log In");
-//        loginButton.setFont(new Font(20));
-//        
-//        
-//            loginButton.setOnMouseClicked((e) -> {
-//                
-//                System.out.println("name: " + FirstName + " " + LastName);
-//                System.out.println("ID: " + ID);
-//                boolean isgood = false;
-//                try {
-//                    isgood = Vep.IDChecker(ID, LastName, FirstName);
-//                } catch (IOException ex) {
-//                    Logger.getLogger(LoginUserInterface.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//                if (isgood) {
-//
-//                    this.vep.openVotingUserInterface();
-//                    final boolean Flag = true;
-//                    
-//                } else {
-//                    Text Error = new Text(5, 5, "ERROR! You have already voted or name does not match your Student ID.");
-//                    Error.setFont(new Font(20));
-//                    Error.setTextAlignment(TextAlignment.CENTER);
-//                    VBox vb = new VBox();
-//                    vb.getChildren().add(Error);
-//                    vb.setAlignment(Pos.CENTER);
-//                    vb.setMargin(Error, new Insets(0, 0, 300, 0));
-//
-//                    //add to borderPane and center
-//                    this.setBottom(vb);
-//                    this.setAlignment(this.getBottom(), Pos.CENTER);
-//                    
-//                    buildLoginButton();
-//
-//                    
-//                    
-//                }
-//
-//            }
-//                    
-//            );
-//
-//        
-//        //add to hbox and format
-//        buttonHolder.getChildren().add(loginButton);
-//        buttonHolder.setAlignment(Pos.CENTER);
-//        buttonHolder.setMargin(loginButton, new Insets(0, 0, 100, 0));
-//
-//        return buttonHolder;
-//    }
 }
