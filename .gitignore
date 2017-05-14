@@ -4,6 +4,11 @@
 /VEP/vep/build/
 /VEP/vep/dist/
 /SP/Code/ScheduleProtoyper/nbproject/private/
+<<<<<<< HEAD
 /VEP/Shoshana's Code/ElectionVerifier/Election Verifier/dist/
 /VEP/vep/encryptionTest/build/
 /VEP/vep/encryptionTest/nbproject/private/
+=======
+/SP/Code/ScheduleProtoyper/build/
+>>>>>>> refs/remotes/origin/master
+/VEP/encryptionTest/dist/

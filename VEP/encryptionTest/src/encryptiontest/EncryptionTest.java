@@ -19,35 +19,16 @@ public class EncryptionTest {
      */
     public static void main(String[] args) {
         //This is a refashioning of the RSA cryptosystem that hopefully makes more sense
-        
-        //Takes the number to encrypt
-        Scanner reader = new Scanner(System.in);
-        System.out.println("Number to encrypt:");
-        String bi = reader.next();
-        BigInteger n = new BigInteger(bi);
-        
-        //To create the keys, RSA requires randomly generated primes
-        //For now, I am using given primes but so far, this works
-        BigInteger p = new BigInteger("331");
-        BigInteger q = new BigInteger("739");
-        
-        //Using a map here to keep each important number (The encryptor, decryptor, and mod)
-        //assigned to its respective String
-        //This makes it easier to understand the process
-        Map keys = returnKey(p, q);
-        
-        //Encrypts and decrypts
-        BigInteger encryptN = encrypt(keys, n);
-        System.out.println(encryptN);
-        BigInteger decryptN = decrypt(keys, encryptN);
-        System.out.println(decryptN);
-        
-        
+        test();
     }
     
-    public static Map returnKey (BigInteger p, BigInteger q){
+    public static Map returnKey (){
         //Creates a Map to assign the values to later on
         Map keys = new HashMap();
+        
+        Random rand = new Random();
+        BigInteger p = BigInteger.probablePrime(rand.nextInt(11)+50, rand);
+        BigInteger q = BigInteger.probablePrime(rand.nextInt(11)+60, rand);
         
         //Creating the keys requires several steps. The first one is to find n
         //n = p*q
@@ -58,10 +39,19 @@ public class EncryptionTest {
         BigInteger p1 = p.subtract(new BigInteger("1")), q1 = q.subtract(new BigInteger("1"));
         BigInteger eRange = (p1.multiply(q1)).divide(p1.gcd(q1));
         
-        //Althought the lcm is supposed to act as the range that e (a randomly generated prime) could be found
-        //Since I can't randomly generate primes, for now I'm using a given 17
+                
+        //The lcm is supposed to act as the range that e (a randomly generated prime) could be found
         //e is the encryptor, Your Message^e is the first part of the encryption process
-        BigInteger e = new BigInteger("17");
+        BigInteger e = BigInteger.probablePrime(eRange.bitLength()/2, rand);
+        boolean isCoprime = false;
+        do {
+            if (eRange.mod(e).compareTo(BigInteger.ZERO) == 0) {
+                e = e.nextProbablePrime();
+                if(eRange.mod(e).compareTo(BigInteger.ZERO) > 0) {
+                    isCoprime = true;
+                }
+            }
+        } while (!isCoprime);
         
         //Finding d is simply taking the inverse mod of the lcm of e.
         //This gives you a number that, when powing and modding, cancel out e
@@ -92,4 +82,23 @@ public class EncryptionTest {
         return decrypted;
     }
     
+    public static void test() {
+        //Takes the number to encrypt
+        Scanner reader = new Scanner(System.in);
+        Random rand = new Random();
+        System.out.println("Number to encrypt:");
+        //String bi = reader.next();
+        BigInteger n = new BigInteger(reader.next());
+        
+        //Using a map here to keep each important number (The encryptor, decryptor, and mod)
+        //assigned to its respective String
+        //This makes it easier to understand the process
+        Map keys = returnKey();
+        
+        //Encrypts and decrypts
+        BigInteger encryptN = encrypt(keys, n);
+        System.out.println(encryptN);
+        BigInteger decryptN = decrypt(keys, encryptN);
+        System.out.println(decryptN);
+    }
 }

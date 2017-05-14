@@ -1,0 +1,132 @@
+name,gradelevels,name,login,name
+
+A,7-9,Algebra 1,lbenaloh,Mathematics
+G,7-9,Algebra 1,apegeron,Mathematics
+B,7-9,Algebra 1,apegeron,Mathematics
+E-MS,7-9,Algebra 1,apegeron,Mathematics
+D,7-10,Spanish 1,dalbu,Spanish
+G,7-10,Spanish 1,dalbu,Spanish
+C,9-10,Medieval Era: Europe in Transition,bmckinney,History/Social Science
+H,9-10,Medieval Era: Europe in Transition,bmckinney,History/Social Science
+A,9-10,Medieval Era: Europe in Transition,bmckinney,History/Social Science
+B,8-11,Spanish 2,eferguson,Spanish
+D,8-11,Spanish 2,eferguson,Spanish
+E,8-11,Spanish 2,eferguson,Spanish
+A,10,Chemistry,nwallace,Science
+D,10,Chemistry,nwallace,Science
+B,10,Chemistry,nwallace,Science
+C,10,Chemistry,apegeron,Science
+H,9-12,Spanish 3,jruiz,Spanish
+E,9-12,Spanish 3,jruiz,Spanish
+G,9-12,Spanish 3,jruiz,Spanish
+H,9-12,Spanish 4,dalbu,Spanish
+B,9-12,Spanish 4,dalbu,Spanish
+C,8-10,Geometry,kwassink,Mathematics
+E,8-10,Geometry,kwassink,Mathematics
+G,8-10,Geometry,sfassino,Mathematics
+H,8-10,Geometry,sfassino,Mathematics
+A,9-12,Pre-Calculus,abehrmann,Mathematics
+B,9-12,Pre-Calculus,abehrmann,Mathematics
+E,9-12,Pre-Calculus,abehrmann,Mathematics
+B,9-12,Algebra 2,sfassino,Mathematics
+F,9-12,Algebra 2,abehrmann,Mathematics
+C,9-12,Algebra 2,sfassino,Mathematics
+A,9-12,Physical Education (US),mhayes,Physical Education
+E-US,9-12,Drawing & Painting 1 (US),bhutcheson,Fine and Performing Arts
+D,9-10,Renaissance: The Cultural Epicenter,srainwater,History/Social Science
+H,9-10,Ancient Poetry,skeedy,English
+A,9-10,Ancient Poetry,skeedy,English
+C,9-10,Revolutions in Thought: 19th Century British Literature,vsayles,English
+D,9-10,Revolutions in Thought: 19th Century British Literature,vsayles,English
+F,9-10,Revolutions in Thought: 19th Century British Literature,vsayles,English
+D,9-10,Modern African Literature,eolsen,English
+B,9-10,Modern African Literature,eolsen,English
+F,9-10,Middle-Eastern and Middle-Eastern American Literature,skeedy,English
+G,9-10,Middle-Eastern and Middle-Eastern American Literature,skeedy,English
+D,11,American Literature,iduncan,English
+C,11,American Literature,iduncan,English
+B,11,American Literature,iduncan,English
+F,9-12,Graphic Design 1,bhutcheson,Fine and Performing Arts
+D,9-10,Prehistory: Building Blocks of Civilization,srainwater,History/Social Science
+E-US,9-10,Prehistory: Building Blocks of Civilization,srainwater,History/Social Science
+D,9-10,Revolutions in Thought: Enlightenment to Industrial Revolution,dfierce,History/Social Science
+G,9-10,Revolutions in Thought: Enlightenment to Industrial Revolution,dfierce,History/Social Science
+C,9-10,Revolutions in Thought: Enlightenment to Industrial Revolution,srainwater,History/Social Science
+D,9-10,Modern African History,srainwater,History/Social Science
+C,9-10,Modern African History,srainwater,History/Social Science
+D,9-10,The Modern Middle East,dfierce,History/Social Science
+A,9-10,The Modern Middle East,dfierce,History/Social Science
+B,11,United States History: The American Question,dfierce,History/Social Science
+C,11,United States History: The American Question,dfierce,History/Social Science
+D,11,United States History: The American Question,bmckinney,History/Social Science
+A,10-12,Calculus,jgarrison,Mathematics
+D,10-12,Calculus,jgarrison,Mathematics
+F,9-12,Advanced Physics,akruger,Science
+E-US,12,Democratic Theories and Civic Practices,acolello,History/Social Science
+A,12,Jurisprudence: The History of Legal Precedent in the United States,bmckinney,History/Social Science
+D,12,International Relations,acolello,History/Social Science
+E-US,12,International Relations,acolello,History/Social Science
+C,9-10,Shakespeare,eolsen,English
+D,9-10,Modern Perspectives: Late 19th and Early 20th Century European Literature,skeedy,English
+A,9-10,Modern Perspectives: Late 19th and Early 20th Century European Literature,skeedy,English
+H,9-10,Modern Perspectives: Late 19th and Early 20th Century European Literature,vsayles,English
+C,9-10,Modern Perspectives: Ideologies in Practice,bmckinney,History/Social Science
+F,9-10,Modern Perspectives: Ideologies in Practice,bmckinney,History/Social Science
+B,9-10,Modern Perspectives: Ideologies in Practice,acolello,History/Social Science
+G,9-12,Mixed Media: Materials & Concepts,abalcomb,Fine and Performing Arts
+E-US,9-12,Choir (US),gellingson,Fine and Performing Arts
+G,9-12,Digital Filmmaking 1,abalcomb,Fine and Performing Arts
+A,11-12,Advanced Spanish: Literature,eferguson,Spanish
+B,11-12,Advanced Spanish: Literature,kviolette,Spanish
+A,11-12,Advanced Spanish: Literature,kviolette,Spanish
+H,11-12,Advanced Spanish: Language,eferguson,Spanish
+B,11-12,Statistics,jgarrison,Mathematics
+G,11-12,Statistics,jgarrison,Mathematics
+D,9-10,Latin American Literature,skeedy,English
+C,9-10,Latin American Literature,skeedy,English
+A,9-10,Medieval Literature,vsayles,English
+H,9-10,Medieval Literature,vsayles,English
+D,9-10,Medieval Literature,vsayles,English
+A,9-10,Modern Asian Literature and Film,vsayles,English
+D,9-10,Modern Asian Literature and Film,vsayles,English
+G,9-10,Modern Asian Literature and Film,vsayles,English
+H,9-10,The Historical Formation of Latin American Identity,dfierce,History/Social Science
+A,9-10,The Historical Formation of Latin American Identity,acolello,History/Social Science
+C,9-10,Modern Asian History,bmckinney,History/Social Science
+F,9-10,Modern Asian History,bmckinney,History/Social Science
+H,9-10,Modern Asian History,bmckinney,History/Social Science
+F,9-12,PE Wellness,dblair,Physical Education
+F,9-12,Advanced Creative Writing: Fiction and Poetry,vsayles,English
+D,12,Comparative Government,dfierce,History/Social Science
+B,12,The Economics of Development,mdelaney,History/Social Science
+D,12,Public Policy: Race,Class,Gender and the Environment,acolello,History/Social Science
+F,9-12,Web Design 1: From the Ground Up,dclarke,Technology
+C,5-12,Instrumental Music Ensemble,tnystrom,Fine and Performing Arts
+A,9-12,Modern Mythology in American Film,mdelaney,Interdisciplinary Electives
+G,11-12,Advanced Biology: Topics in Human Biology and Biotechnology,kwassink,Science
+G,9-12,PE Yoga (US),vchalana,Physical Education
+F,9-12,PE Yoga (US),vchalana,Physical Education
+C,10-12,Experience: Seattle,eolsen,History/Social Science
+E,11-12,Advanced Calculus,lbenaloh,Mathematics
+H,11-12,Advanced Calculus,jgarrison,Mathematics
+F,11-12,Directing,ttaylor,Fine and Performing Arts
+G,9-12,Introduction to Public Speaking,iduncan,Interdisciplinary Electives
+F,9-12,Creative Writing,eolsen,English
+F,9-12,Programming 2,gmein,Technology
+A,9,Biology,awaltzer,Science
+B,9,Biology,awaltzer,Science
+D,9,Biology,awaltzer,Science
+E,9,Biology,awaltzer,Science
+G,9-12,Physical Meets Digital,rmack,Technology
+G,9-12,Programming 1,gmein,Technology
+F,9-12,Acting,ttaylor,Fine and Performing Arts
+G,9-12,Chamber Choir,gellingson,Fine and Performing Arts
+H,5-12,Introduction to Instrumental Music,gellingson,Fine and Performing Arts
+G,11-12,Neurobiology of the Mind,kmoore,Interdisciplinary Electives
+A,10-12,Advanced Spanish: Conversation Through Current Events,pferreyra,Spanish
+G,10-12,Advanced Spanish: Conversation Through Music,pferreyra,Spanish
+A,10-12,Advanced Spanish: Conversation Through Cinema,pferreyra,Spanish
+G,11-12,Advanced Chemistry,nwallace,Science
+E,9-12,Digital Photography,cpedersen,Fine and Performing Arts
+F,11-12,Innovation and Entrepreneurship,jrensberger,Interdisciplinary Electives
+H,11-12,Advanced Biology: Topics in Human Biology and Biotechnology,kwassink,Science

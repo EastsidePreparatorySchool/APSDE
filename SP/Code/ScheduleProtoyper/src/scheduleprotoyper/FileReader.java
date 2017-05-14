@@ -4,14 +4,46 @@
  * and open the template in the editor.
  */
 package scheduleprotoyper;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  *
  * @author hmeng
  */
+
+
+//CSV is comma separated variable, a type of file in which each line is a 
 public class FileReader {
-    public static String readFile(){
-        
-        return null;
+    public static List readFile(){
+        List<String> listOfClasses = new ArrayList<String>();
+        //create blank list of strings for class objects
+            try {
+                //Get the scanner instance
+                URL path = FileReader.class.getResource("rshaw.csv");
+                Scanner s = new Scanner(new File(path.getFile()));
+                //skip initialize scanner
+                while(s.hasNext()){
+                    //read single line, put in string
+                    String data = s.next();
+                    listOfClasses.add(data);
+            }
+                s.close();
+            }
+            //check whether or not the file exists
+            catch (FileNotFoundException fe) 
+            {
+                    fe.printStackTrace();
+            }
+            for (String s : listOfClasses) {
+                System.out.println(s);
+            }
+            return(listOfClasses);
     }
 }
