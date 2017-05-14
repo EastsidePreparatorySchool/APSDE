@@ -43,15 +43,10 @@ public class EncryptionTest {
         //The lcm is supposed to act as the range that e (a randomly generated prime) could be found
         //e is the encryptor, Your Message^e is the first part of the encryption process
         BigInteger e = BigInteger.probablePrime(eRange.bitLength()/2, rand);
-        boolean isCoprime = false;
-        do {
-            if (eRange.mod(e).compareTo(BigInteger.ZERO) == 0) {
-                e = e.nextProbablePrime();
-                if(eRange.mod(e).compareTo(BigInteger.ZERO) > 0) {
-                    isCoprime = true;
-                }
-            }
-        } while (!isCoprime);
+       
+        if (eRange.mod(e).compareTo(BigInteger.ZERO) == 0) {
+            e = e.nextProbablePrime();
+        }
         
         //Finding d is simply taking the inverse mod of the lcm of e.
         //This gives you a number that, when powing and modding, cancel out e
