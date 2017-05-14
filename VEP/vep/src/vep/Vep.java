@@ -21,6 +21,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author HSamuelson
@@ -29,11 +31,19 @@ public class Vep extends Application {
 
     Scene scene;
 
+    String styleFile = "vep/css/verifiableElectionStyle1.css";
+    //String styleFile = "vep/css/verifiableElectionStyle2.css";
+    //String styleFile = "vep/css/verifiableElectionStyle3.css";
+
+    public String FirstName = null;
+    public String LastName = null;
+    public String ID = null;
+
     @Override
     public void start(Stage primaryStage) {
         BorderPane root = new LoginUserInterface(this);
         scene = new Scene(root, 2000, 1000);
-
+        scene.getStylesheets().add(styleFile);
         primaryStage.setTitle("EPS Student Body President and Vice President Election 2017");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -51,19 +61,40 @@ public class Vep extends Application {
         scene.setRoot(root);
     }
 
+    public void openFinalResultsUserInterface(String victor) {
+        //build results page and show it
+        BorderPane root = new FinalResultsUserInterface(victor, this);
+        scene.setRoot(root);
+    }
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
         launch(args);
-        // ===== HENRYS CODE DO NOT TOUCH (for now)=====
         System.out.println("hellow world");
         //Fartingaroundmain.path;
         System.out.println(System.getProperty("user.dir").toLowerCase());
         //String cmd = (System.getProperty("user.dir").toLowerCase()).replace("C:/", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe" + (System.getProperty("user.dir").toLowerCase()).replace("C:/", " ");
-        String cmd = (System.getProperty("user.dir") ).replace("C:", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R 2977 WaltzerAdam 1";
+        // String cmd = (System.getProperty("user.dir") ).replace("C:", " ")+"\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R 2977 WaltzerAdam 1";
 
+//        System.out.println(cmd);
+//        Runtime r = Runtime.getRuntime();
+//        Process pr = r.exec(cmd);
+//
+//        BufferedReader stdInput = new BufferedReader(
+//                new InputStreamReader(pr.getInputStream()));
+//
+//        String s;
+//
+//        while ((s = stdInput.readLine()) != null) {
+//            System.out.println(s);
+//        }
+    }
 
+    public static int IDChecker(String ID, String Lastname, String Firstname, String Vote) throws IOException {
+
+        String cmd = (System.getProperty("user.dir")).replace("C:", " ") + "\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R " + ID + " " + Lastname + Firstname + " " + Vote;
         System.out.println(cmd);
         Runtime r = Runtime.getRuntime();
         Process pr = r.exec(cmd);
@@ -75,7 +106,13 @@ public class Vep extends Application {
 
         while ((s = stdInput.readLine()) != null) {
             System.out.println(s);
+            if (s.equals("[1] 1")) {
+                return 1;
+            } else if (s.equals("[1] 0")) {
+                return 0;
+            }
         }
+        return -1;
     }
 
 }
