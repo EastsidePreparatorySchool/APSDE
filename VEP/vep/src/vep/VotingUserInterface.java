@@ -15,6 +15,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -49,8 +50,14 @@ public class VotingUserInterface extends BorderPane {
         VBox centerHolder = new VBox();
         centerHolder.getChildren().addAll(candidates, votingButtonsHolder);
         centerHolder.setSpacing(50);
+
+        //this is to style the borderPane with css
+        this.getStyleClass().add("pane");
+        centerHolder.getStyleClass().add("box");
+
         //place items where we want them and format top button to be on the right
         this.setCenter(centerHolder);
+        this.setMargin(this.getCenter(), new Insets(50, 0, 100, 0));
         this.setTop(logoutButtonHolder);
         this.setAlignment(this.getTop(), Pos.TOP_RIGHT);
     }
@@ -95,6 +102,7 @@ public class VotingUserInterface extends BorderPane {
         candidates.getChildren().addAll(picTextOne, picTextTwo);
         candidates.setAlignment(Pos.CENTER);
         candidates.setSpacing(200);
+        candidates.getStyleClass().add("box");
 
         return candidates;
     }
@@ -127,6 +135,7 @@ public class VotingUserInterface extends BorderPane {
         vb.getChildren().addAll(display, infoBox, vote);
         vb.setAlignment(Pos.CENTER);
         vb.setSpacing(20);
+        vb.getStyleClass().add("box");
 
         return vb;
     }
@@ -188,10 +197,11 @@ public class VotingUserInterface extends BorderPane {
             }
         });
 
-        //add other buttons to their HBox
+        //add other buttons to their HBox and format
         votingButtonsHolder.getChildren().addAll(explainSpoilingButton, castVoteButton, spoilVoteButton);
         votingButtonsHolder.setAlignment(Pos.CENTER);
         votingButtonsHolder.setSpacing(50);
+        votingButtonsHolder.getStyleClass().addAll("box", "votingButtons");
 
         return votingButtonsHolder;
     }
@@ -223,18 +233,17 @@ public class VotingUserInterface extends BorderPane {
             whatIsSpoiling.setWrappingWidth(1000);
             whatIsSpoiling.setTextAlignment(TextAlignment.CENTER);
 
+            //put in a vbox for centering
             VBox vb = new VBox();
             vb.getChildren().add(whatIsSpoiling);
             vb.setAlignment(Pos.CENTER);
-            vb.setMargin(whatIsSpoiling, new Insets(0, 0, 100, 0));
+            vb.getStyleClass().add("spoilingExplanation");
 
-            //add to borderPane and center
-            this.setBottom(vb);
-            this.setAlignment(this.getBottom(), Pos.CENTER);
+            ((VBox) this.getCenter()).getChildren().add(vb);
 
             this.explainedSpoiling = true;
         } else if (this.explainedSpoiling == true) {
-            this.setBottom(null);//this is the method for clearing a region. When it is null no space is allocated. 
+            ((VBox) this.getCenter()).getChildren().remove(2);
             this.explainedSpoiling = false;
         }
     }
