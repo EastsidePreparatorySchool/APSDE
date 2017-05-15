@@ -48,7 +48,7 @@ public class SchedulePrototyper extends Application {
        //this block instantiates graphics with coursesShown at column 0
         coursesShown = new SplitPane();
         coursesShown.setMinHeight(0);
-        FlowPane f = new FlowPane();
+        
         ArrayList<Course> periodA = new ArrayList<>();
         ArrayList<Course> periodB = new ArrayList<>();
         ArrayList<Course> periodC = new ArrayList<>();
@@ -78,12 +78,38 @@ public class SchedulePrototyper extends Application {
                 
             }
         }
+        StackPane period1 = new StackPane(getLabelPane(periodA));
+        StackPane period2 = new StackPane(getLabelPane(periodB));
+        StackPane period3 = new StackPane(getLabelPane(periodC));
+        StackPane period4 = new StackPane(getLabelPane(periodD));
+        StackPane period5 = new StackPane(getLabelPane(periodE));
+        StackPane period6 = new StackPane(getLabelPane(periodF));
+        StackPane period7 = new StackPane(getLabelPane(periodG));
+        StackPane period8 = new StackPane(getLabelPane(periodH));
+        period1.setMinHeight(heightDeterminer(periodA.size()));
+        period2.setMinHeight(heightDeterminer(periodB.size()));
+        period3.setMinHeight(heightDeterminer(periodC.size()));
+        period4.setMinHeight(heightDeterminer(periodD.size()));
+        period5.setMinHeight(heightDeterminer(periodE.size()));
+        period6.setMinHeight(heightDeterminer(periodF.size()));
+        period7.setMinHeight(heightDeterminer(periodG.size()));
+        period8.setMinHeight(heightDeterminer(periodH.size()));
+        coursesShown.getItems().addAll(period1, period2, period3, period4, period5, period6, period7, period8);
+        this.updatePrimaryStage(primaryStage);
+        this.updateCoursesShown();
+    }
+    public int heightDeterminer(int orgheight) {
+        int height = orgheight*25;
+        return(height);
+    }
+    public FlowPane getLabelPane(ArrayList<Course> period) {
+        FlowPane f = new FlowPane();
         ArrayList<Course> coursesthisperiod = new ArrayList<>();
-        coursesthisperiod = periodA; //needs to be courses in a specific period, WRITE A METHOD FOR THIS
+        coursesthisperiod = period; //needs to be courses in a specific period, WRITE A METHOD FOR THIS
         for(int j = 0; j < coursesthisperiod.size(); j++) {
           Course tmp = coursesthisperiod.get(j);
           Label r = new Label(tmp.getName());
-          r.setStyle("-fx-background-color: coral; "
+          r.setStyle("-fx-background-color: orange; "
                   + "-fx-padding: 5px; "
                   + "-fx-border-width: 2px; "
                   + "-fx-border-color: #4d4d4d;");
@@ -93,12 +119,7 @@ public class SchedulePrototyper extends Application {
         }
         f.setHgap(5);
         f.setVgap(5);
-        
-        for (int i = 0; i < 8; i++) {
-            coursesShown.getItems().add(new StackPane(f));
-        }
-        this.updatePrimaryStage(primaryStage);
-        this.updateCoursesShown();
+        return f;
     }
  
 
@@ -136,7 +157,7 @@ public class SchedulePrototyper extends Application {
         splitPane.setDividerPositions(0.25);
         //Constrain max size of left component, creates limits to class schedule
         leftPane.maxWidthProperty().bind(splitPane.widthProperty().multiply(0.25)); //0.25 = 25% of screen
-        Scene scene = new Scene(new BorderPane(splitPane), 800, 600);
+        Scene scene = new Scene(new BorderPane(splitPane), 800, 1000);
         primaryStage.setScene(scene);
         this.assignControls(primaryStage);
         primaryStage.show();
