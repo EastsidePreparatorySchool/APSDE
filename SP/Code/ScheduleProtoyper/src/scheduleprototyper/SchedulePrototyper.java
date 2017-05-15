@@ -2,14 +2,22 @@ package scheduleprototyper;
 
 import java.util.ArrayList;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -23,6 +31,7 @@ public class SchedulePrototyper extends Application {
     int courseX = 0;
     int courseY = 0;
     SplitPane coursesShown;
+    FlowPane coursesShown2;
     //the current 8 courses being shown go in coursesShown
 
     @Override
@@ -38,12 +47,27 @@ public class SchedulePrototyper extends Application {
        //this block instantiates graphics with coursesShown at column 0
         coursesShown = new SplitPane();
         coursesShown.setMinHeight(0);
+        FlowPane f = new FlowPane();
+        ArrayList<Course> coursesthisperiod = new ArrayList<>();
+        coursesthisperiod = courses; //needs to be courses in a specific period, WRITE A METHOD FOR THIS
+        for(int j = 0; j < coursesthisperiod.size(); j++) {
+          Course tmp = coursesthisperiod.get(j);
+          Label r = new Label(tmp.getName());
+          r.setStyle("-fx-background-color: coral; -fx-padding: 5px;");
+          StackPane stack = new StackPane();
+          stack.getChildren().add(r);
+          f.getChildren().add(stack);
+        }
+        f.setHgap(20);
+        
         for (int i = 0; i < 8; i++) {
-            coursesShown.getItems().add(new StackPane(new Label("(0, " + i + ")")));
+            coursesShown.getItems().add(new StackPane(f));
+            
         }
         this.updatePrimaryStage(primaryStage);
         this.updateCoursesShown();
     }
+ 
 
     /**
      * @param args the command line arguments
