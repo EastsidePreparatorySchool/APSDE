@@ -72,6 +72,8 @@ public class SchedulePrototyper extends Application {
                 case 'E':
                     periodE.add(currentcourse);
                 case 'F':
+                    periodF.add(currentcourse);
+                case 'G':
                     periodG.add(currentcourse);
                 case 'H':
                     periodH.add(currentcourse);
@@ -86,21 +88,17 @@ public class SchedulePrototyper extends Application {
         StackPane period6 = new StackPane(getLabelPane(periodF));
         StackPane period7 = new StackPane(getLabelPane(periodG));
         StackPane period8 = new StackPane(getLabelPane(periodH));
-        period1.setMinHeight(heightDeterminer(periodA.size()));
-        period2.setMinHeight(heightDeterminer(periodB.size()));
-        period3.setMinHeight(heightDeterminer(periodC.size()));
-        period4.setMinHeight(heightDeterminer(periodD.size()));
-        period5.setMinHeight(heightDeterminer(periodE.size()));
-        period6.setMinHeight(heightDeterminer(periodF.size()));
-        period7.setMinHeight(heightDeterminer(periodG.size()));
-        period8.setMinHeight(heightDeterminer(periodH.size()));
+//        period1.setMinHeight(heightDeterminer(period1));
+//        period2.setMinHeight(heightDeterminer(periodB.size()));
+//        period3.setMinHeight(heightDeterminer(periodC.size()));
+//        period4.setMinHeight(heightDeterminer(periodD.size()));
+//        period5.setMinHeight(heightDeterminer(periodE.size()));
+//        period6.setMinHeight(heightDeterminer(periodF.size()));
+//        period7.setMinHeight(heightDeterminer(periodG.size()));
+//        period8.setMinHeight(heightDeterminer(periodH.size()));
         coursesShown.getItems().addAll(period1, period2, period3, period4, period5, period6, period7, period8);
         this.updatePrimaryStage(primaryStage);
         this.updateCoursesShown();
-    }
-    public int heightDeterminer(int orgheight) {
-        int height = orgheight*25;
-        return(height);
     }
     public FlowPane getLabelPane(ArrayList<Course> period) {
         FlowPane f = new FlowPane();
@@ -157,7 +155,7 @@ public class SchedulePrototyper extends Application {
         splitPane.setDividerPositions(0.25);
         //Constrain max size of left component, creates limits to class schedule
         leftPane.maxWidthProperty().bind(splitPane.widthProperty().multiply(0.25)); //0.25 = 25% of screen
-        Scene scene = new Scene(new BorderPane(splitPane), 800, 1000);
+        Scene scene = new Scene(new BorderPane(splitPane), 800, 600);
         primaryStage.setScene(scene);
         this.assignControls(primaryStage);
         primaryStage.show();
