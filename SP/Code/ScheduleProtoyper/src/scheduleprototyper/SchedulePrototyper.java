@@ -41,28 +41,61 @@ public class SchedulePrototyper extends Application {
         FileReader fr = new FileReader();
         ArrayList<Course> courses = fr.readFile("rshaw.csv");
         //filteredCourses will need to be written to as some function of courses, Aman and Theo.
-        ArrayList<ArrayList<Course>> filteredCourses = new ArrayList<>();
-        filteredCourses.add(courses);
+        //ArrayList<ArrayList<Course>> filteredCourses = new ArrayList<>();
+        ArrayList<Course> filteredCourses = new ArrayList<>();
+        filteredCourses = courses; //AMAN AND THEO CAN CHANGE THIS ONCE THEY WRITE THIS METHOD
 
        //this block instantiates graphics with coursesShown at column 0
         coursesShown = new SplitPane();
         coursesShown.setMinHeight(0);
         FlowPane f = new FlowPane();
+        ArrayList<Course> periodA = new ArrayList<>();
+        ArrayList<Course> periodB = new ArrayList<>();
+        ArrayList<Course> periodC = new ArrayList<>();
+        ArrayList<Course> periodD = new ArrayList<>();
+        ArrayList<Course> periodE = new ArrayList<>();
+        ArrayList<Course> periodF = new ArrayList<>();
+        ArrayList<Course> periodG = new ArrayList<>();
+        ArrayList<Course> periodH = new ArrayList<>();
+        for(int l =0; l < filteredCourses.size(); l++) {
+            Course currentcourse = filteredCourses.get(l);
+            char period = currentcourse.getPeriod();
+            switch(period) {
+                case 'A':
+                    periodA.add(currentcourse);
+                case 'B':
+                    periodB.add(currentcourse);
+                case 'C':
+                    periodC.add(currentcourse);
+                case 'D':
+                    periodD.add(currentcourse);
+                case 'E':
+                    periodE.add(currentcourse);
+                case 'F':
+                    periodG.add(currentcourse);
+                case 'H':
+                    periodH.add(currentcourse);
+                
+            }
+        }
         ArrayList<Course> coursesthisperiod = new ArrayList<>();
-        coursesthisperiod = courses; //needs to be courses in a specific period, WRITE A METHOD FOR THIS
+        coursesthisperiod = periodA; //needs to be courses in a specific period, WRITE A METHOD FOR THIS
         for(int j = 0; j < coursesthisperiod.size(); j++) {
           Course tmp = coursesthisperiod.get(j);
           Label r = new Label(tmp.getName());
-          r.setStyle("-fx-background-color: coral; -fx-padding: 5px;");
+          r.setStyle("-fx-background-color: coral; "
+                  + "-fx-padding: 5px; "
+                  + "-fx-border-width: 2px; "
+                  + "-fx-border-color: #4d4d4d;");
           StackPane stack = new StackPane();
           stack.getChildren().add(r);
           f.getChildren().add(stack);
         }
-        f.setHgap(20);
+        f.setHgap(5);
+        f.setVgap(5);
         
         for (int i = 0; i < 8; i++) {
             coursesShown.getItems().add(new StackPane(f));
-            
         }
         this.updatePrimaryStage(primaryStage);
         this.updateCoursesShown();
