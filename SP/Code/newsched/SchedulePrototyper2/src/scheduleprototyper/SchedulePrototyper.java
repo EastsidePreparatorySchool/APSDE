@@ -78,8 +78,6 @@ public class SchedulePrototyper extends Application {
         period1.minHeight(26);
         period1.minWidth(400);
         period1.setContent(getLabelPane(periodA));
-        System.out.println(periodA);
-        System.out.println(periodB);
         StackPane period2 = new StackPane(getLabelPane(periodB));
         StackPane period3 = new StackPane(getLabelPane(periodC));
         StackPane period4 = new StackPane(getLabelPane(periodD));
