@@ -110,7 +110,10 @@ public class Vep extends Application {
                 return 1;
             } else if (s.equals("[1] 0")) {
                 return 0;
+            } else if(s.equals("[1] 666")){
+                return 666;
             }
+            
         }
         return -1;
     }
