@@ -118,7 +118,7 @@ idprocess <- function(idq, nameq, votingID){
       
       
       #user has voted change has voted column
-      dataBase[subset(dataBase, dataBase$id == idq)$easyIndex, ]$hasvoted = 1
+      dataBase[subset(dataBase, dataBase$id == idq)$id, ]$hasvoted = 1
       counter = counter +1
       write.csv(dataBase, file = "idDatabase2.csv")
       dataBase <- read.csv("idDatabase2.csv")
