@@ -53,7 +53,7 @@ returnFinalStats <- function(){
       )
   percents <- cbind(percent.female, percent.male)
   
-  png("..finalstatimages/pMFvote.png")  #write Image to png
+  png("src/finalstatimages/pMFvote.png")  #write Image to png
   barplot(percents, main = "Percent of Male and female votes", ylab = "%")
   dev.off()
   
@@ -66,13 +66,13 @@ returnFinalStats <- function(){
   
   comb.number <- cbind(number.of.female.votes, number.of.male.votes)
   
-  png("finalstatimages/numVotesMF.png")
+  png("src/finalstatimages/numVotesMF.png")
   barplot(comb.number, main = "Total # of Votes M/F", ylab = "# of Votes")
   dev.off()
   
   
   #Votes by grade
-  png("finalstatimages/votesByGrade.png")
+  png("src/finalstatimages/votesByGrade.png")
   barplot(table(subset(dataBase, dataBase$hasvoted == 1)$gradyear),  main = "Votes per grade", ylab ="# of Votes")
   dev.off()
   
