@@ -14,18 +14,18 @@ import java.util.ArrayList;
  */
 public class PublicComputer extends Computer {
     
-    PublicComputer(BigInteger c, BigInteger n, BigInteger g){
+    PublicComputer(BigInteger c, BigInteger n, BigInteger e){
         this.c = c;
         this.n = n;
-        this.g = g;
+        this.e = e;
     }
     
-    public BigInteger verifyVote(BigInteger x) {
+    public BigInteger verifyVote(BigInteger m) {
         //someone voted
         //they then spoiled a ballot, and the machine gave them x
         //now they can take g to the x mod n and make sure they get the correct number
         
-        BigInteger whatItShouldBe = this.g.modPow(x, this.n);
+        BigInteger whatItShouldBe = m.modPow(this.n, this.e);
         
         return whatItShouldBe;
 
@@ -51,7 +51,7 @@ public class PublicComputer extends Computer {
         }
         
         //now I need to take g ^ sum of all x's election published
-        BigInteger verifiedCount = this.g.modPow(allXs, this.n);
+        BigInteger verifiedCount = allXs.modPow(this.n, this.e);
         
         int comparison = verifiedCount.compareTo(multipliedBallots);
         //hopefully this returns 0, then we know it is correct

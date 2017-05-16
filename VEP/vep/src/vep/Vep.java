@@ -31,9 +31,9 @@ public class Vep extends Application {
 
     Scene scene;
 
-    String styleFile = "vep/css/verifiableElectionStyle1.css";
+    //String styleFile = "vep/css/verifiableElectionStyle1.css";
     //String styleFile = "vep/css/verifiableElectionStyle2.css";
-    //String styleFile = "vep/css/verifiableElectionStyle3.css";
+    String styleFile = "vep/css/verifiableElectionStyle3.css";
 
     public String FirstName = null;
     public String LastName = null;

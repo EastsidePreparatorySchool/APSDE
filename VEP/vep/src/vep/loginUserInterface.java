@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
@@ -40,17 +41,28 @@ public class LoginUserInterface extends BorderPane {
         //build the vboxes and hbox which will hold all relevant fields
         VBox instructions = buildInstructions();
         VBox textFields = buildTextFields();
+        StackPane s = new StackPane();//this is going to allow for some creative coloring
+        StackPane s2 = new StackPane();//same as above
 
-        //css for these fields
+        //css for these fields 
         this.getStyleClass().add("pane");
-        instructions.getStyleClass().addAll("spoilingExplanation","box" );
-        textFields.getStyleClass().add("box");
+        s.getStyleClass().addAll("spoilingExplanation", "box");
+        s2.getStyleClass().add("box");
+
+        //combine instructions and its holder stackpane
+        s.getChildren().add(instructions);
+        s.setMargin(instructions, new Insets(75, 0, 0, 0));
+
+        //combine textfields withh holder
+        s2.getChildren().add(textFields);
+        
 
         //add vboxes to relevant locations
-        this.setTop(instructions);
+        this.setTop(s);
         this.setAlignment(this.getTop(), Pos.CENTER);
-        this.setCenter(textFields);
+        this.setCenter(s2);
         this.setMargin(this.getCenter(), new Insets(0, 200, 0, 200));
+       
 
     }
 
@@ -60,13 +72,16 @@ public class LoginUserInterface extends BorderPane {
         //build explanation of instructions at the top of the page and add it into a vbox
         Text infoBox = new Text(20, 40, "Welcome to the Verifiable Election Booth! Please note that in this election process we value your anonymity. This voting process is designed to ensure that nobody can discern who you voted for. It achieves this through encryption, compartmentalization and your ability to spoil the vote, which will be explained later. For now, to begin voting please enter your email and password. This password should have been sent to your email earlier today.");
         infoBox.setFont(new Font(20));
-        infoBox.setWrappingWidth(600);
+        infoBox.setWrappingWidth(800);
         infoBox.setTextAlignment(TextAlignment.CENTER);
+        infoBox.getStyleClass().add("text");
 
         //format and place top explanation may need to reformat later
         instructions.getChildren().add(infoBox);
         instructions.setAlignment(Pos.CENTER);
-        instructions.setMargin(infoBox, new Insets(75, 0, 0, 0));
+        instructions.getStyleClass().add("contentBox");
+        instructions.setMaxWidth(1000);
+        instructions.setMargin(instructions, new Insets(100, 0, 100, 0));
 
         return instructions;
     }
@@ -126,10 +141,12 @@ public class LoginUserInterface extends BorderPane {
         }
         );
 
-        //add to hbox and format
+        //add to vbox and format
         textFields.getChildren().add(loginButton);
         textFields.setAlignment(Pos.CENTER);
-        textFields.setMargin(loginButton, new Insets(0, 0, 100, 0));
+        textFields.getStyleClass().add("contentBox");
+        textFields.setMaxWidth(1000);
+
 
         return textFields;
     }
