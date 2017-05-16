@@ -22,6 +22,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
 /**
@@ -137,6 +138,7 @@ public class LoginUserInterface extends BorderPane {
                 Text Error = new Text(5, 5, "ERROR! Name does not match your number.");
                 Error.setFont(new Font(20));
                 Error.setTextAlignment(TextAlignment.CENTER);
+                Error.setFill(Color.RED);
                 VBox vb = new VBox();
                 vb.getChildren().add(Error);
                 vb.setAlignment(Pos.CENTER);

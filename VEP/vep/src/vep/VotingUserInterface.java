@@ -166,6 +166,7 @@ public class VotingUserInterface extends BorderPane {
                     Text Error = new Text(5, 5, "ERROR! You have not selected a candidate");
                     Error.setFont(new Font(20));
                     Error.setTextAlignment(TextAlignment.CENTER);
+                    Error.setFill(Color.RED);
                     VBox vb = new VBox();
                     vb.getChildren().add(Error);
                     vb.setAlignment(Pos.CENTER);
@@ -181,6 +182,7 @@ public class VotingUserInterface extends BorderPane {
                 Text Error = new Text(5, 5, "ERROR! You have already voted!");
                 Error.setFont(new Font(20));
                 Error.setTextAlignment(TextAlignment.CENTER);
+                Error.setFill(Color.RED);
                 VBox vb = new VBox();
                 vb.getChildren().add(Error);
                 vb.setAlignment(Pos.CENTER);
