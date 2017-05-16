@@ -31,9 +31,9 @@ public class Vep extends Application {
 
     Scene scene;
 
-    String styleFile = "vep/css/verifiableElectionStyle1.css";
+    //String styleFile = "vep/css/verifiableElectionStyle1.css";
     //String styleFile = "vep/css/verifiableElectionStyle2.css";
-    //String styleFile = "vep/css/verifiableElectionStyle3.css";
+    String styleFile = "vep/css/verifiableElectionStyle3.css";
 
     public String FirstName = null;
     public String LastName = null;
@@ -41,7 +41,7 @@ public class Vep extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        BorderPane root = new LoginUserInterface(this);
+        BorderPane root = new FinalResultsUserInterface("Maja and Ayush", this);
         scene = new Scene(root, 2000, 1000);
         scene.getStylesheets().add(styleFile);
         primaryStage.setTitle("EPS Student Body President and Vice President Election 2017");
