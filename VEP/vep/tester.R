@@ -1,4 +1,4 @@
-#setwd("C:/Users/HSamuelson/Documents/GitHub/APSDE/VEP/vep/")
+setwd("C:/Users/HSamuelson/Documents/GitHub/APSDE/VEP/vep/")
 args <- commandArgs(trailingOnly = TRUE)
 
 #
@@ -127,7 +127,7 @@ idprocess <- function(idq, nameq, votingID){
       counter = counter +1
       write.csv(dataBase, file = "idDatabase2.csv")
       dataBase <- read.csv("idDatabase2.csv")
-      data$X <- NULL 
+      dataBase$X <- NULL 
       if(counter ==2){
         return(1)  #If this is true that means the vote has been sucessfuly added and users "hasvoted" column has been updated.
       }
