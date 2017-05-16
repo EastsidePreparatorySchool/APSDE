@@ -108,10 +108,10 @@ public class Vep extends Application {
             System.out.println(s);
             if (s.equals("[1] 1")) {
                 return 1;
-            } else if (s.equals("[1] 0")) {
-                return 0;
-            } else if(s.equals("[1] 666")){
+            }  else if(s.equals("[1] 666")){
                 return 666;
+            }else{
+                return 0;
             }
             
         }
