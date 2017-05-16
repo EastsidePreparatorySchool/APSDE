@@ -161,6 +161,7 @@ public class VotingUserInterface extends BorderPane {
                     System.out.println(Tally1);
                 } else if (Vote.equals("2")) {
                     Tally2++;
+                    System.out.println(Tally2);
                 } else {
                     Text Error = new Text(5, 5, "ERROR! You have not selected a candidate");
                     Error.setFont(new Font(20));
