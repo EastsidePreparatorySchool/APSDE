@@ -90,7 +90,7 @@ idprocess <- function(idq, nameq, votingID){
   if(idq == "666"){
     if(nameq == "sixsixsix"){  #Return final stats to Gumere when id and last name == 666
       returnFinalStats()
-      return("666")
+      return(666)
     }
   }
   #check if id exsists in order not to mess up the subset()
