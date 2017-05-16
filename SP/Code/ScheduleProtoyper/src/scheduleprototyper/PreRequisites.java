@@ -30,7 +30,7 @@ import javafx.stage.Stage;
 public class Prerequisites extends Application {
 
     static ArrayList<String> classes = new ArrayList<String>();
-    
+    public User user;
     @Override
     public void start(Stage primaryStage) {
         GridPane grid = new GridPane();
@@ -168,6 +168,7 @@ public class Prerequisites extends Application {
                 for (int i = 0; i < classes.size(); i++) {
                     System.out.println(classes.get(i));
                 }
+                user = new User(classes,name.getText());
             }
         });
 
