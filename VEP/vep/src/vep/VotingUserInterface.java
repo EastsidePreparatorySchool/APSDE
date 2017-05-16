@@ -148,7 +148,9 @@ public class VotingUserInterface extends BorderPane {
         castVoteButton.setOnMouseClicked((e) -> {
             int isgood = -1;
             try {
-                isgood = Vep.IDChecker(vep.ID, vep.LastName, vep.FirstName, Vote);
+                System.out.println(vep.ID);
+                System.out.println(vep.email);
+                isgood = Vep.IDChecker(vep.ID, vep.email, Vote);
 
             } catch (IOException ex) {
                 Logger.getLogger(VotingUserInterface.class.getName()).log(Level.SEVERE, null, ex);
