@@ -1,4 +1,4 @@
-# setwd("C:/Users/HSamuelson/Documents/GitHub/APSDE/VEP/vep/")
+#setwd("C:/Users/HSamuelson/Documents/GitHub/APSDE/VEP/vep/")
 args <- commandArgs(trailingOnly = TRUE)
 
 #
@@ -22,7 +22,9 @@ args <- commandArgs(trailingOnly = TRUE)
   #To print final stats id has to == 666 and login has to be "sixsixsix"
 
 dataBase <- read.csv("idDatabase2.csv")
+dataBase$X <- NULL
 votes <- read.csv("votesTEMP.csv")
+votes$X <- NULL
 
 #arg1 -- id  <- your key you are sent via email.... (THIS IS NO LONGER STUDENT ID, due to security issues)
 #arg2 --"login"  <- hsamuelson
@@ -54,6 +56,7 @@ returnFinalStats <- function(){
   percents <- cbind(percent.female, percent.male)
   
   png("src/finalstatimages/pMFvote.png")  #write Image to png
+  print("W")
   barplot(percents, main = "Percent of Male and female votes", ylab = "%")
   dev.off()
   
@@ -67,17 +70,18 @@ returnFinalStats <- function(){
   comb.number <- cbind(number.of.female.votes, number.of.male.votes)
   
   png("src/finalstatimages/numVotesMF.png")
+  print("WW")
   barplot(comb.number, main = "Total # of Votes M/F", ylab = "# of Votes")
   dev.off()
   
   
   #Votes by grade
   png("src/finalstatimages/votesByGrade.png")
+  print("WWWW")
   barplot(table(subset(dataBase, dataBase$hasvoted == 1)$gradyear),  main = "Votes per grade", ylab ="# of Votes")
   dev.off()
   
 }  
-
 
 
 
@@ -114,6 +118,7 @@ idprocess <- function(idq, nameq, votingID){
         counter = counter + 1
         write.csv(votes, file = "votesTEMP.csv")
         votes <- read.csv("votesTEMP.csv")
+        votes$X <- NULL
       }
       
       
@@ -122,6 +127,7 @@ idprocess <- function(idq, nameq, votingID){
       counter = counter +1
       write.csv(dataBase, file = "idDatabase2.csv")
       dataBase <- read.csv("idDatabase2.csv")
+      data$X <- NULL 
       if(counter ==2){
         return(1)  #If this is true that means the vote has been sucessfuly added and users "hasvoted" column has been updated.
       }
