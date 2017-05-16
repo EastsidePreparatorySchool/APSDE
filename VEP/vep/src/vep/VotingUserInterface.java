@@ -5,7 +5,10 @@
  */
 package vep;
 
+import encryptiontest.EncryptionTest;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.geometry.Insets;
@@ -35,12 +38,16 @@ public class VotingUserInterface extends BorderPane {
     Boolean explainedSpoiling = false;
     String Vote = "-1";
     int Tally1;//Temporary Ethan
-
+    BigInteger evote;
     int Tally2;//Temporary Maja
 
     VotingUserInterface(Vep v) {
         super();
+        
         this.vep = v;
+        
+        evote = BigInteger.valueOf(0);
+        
         HBox candidates = buildCandidatesHBox();
         HBox logoutButtonHolder = buildLogoutButton();
         HBox votingButtonsHolder = buildVotingButtons();
@@ -142,10 +149,14 @@ public class VotingUserInterface extends BorderPane {
 
         Button spoilVoteButton = new Button("Spoil my Vote");
         spoilVoteButton.setFont(new Font(20));
+        spoilVoteButton.setOnMouseClicked((e) -> {
+            //functionaality to be conected with Nathan's code
+        });
         Button castVoteButton = new Button("Cast my Vote");
         castVoteButton.setFont(new Font(20));
 
         castVoteButton.setOnMouseClicked((e) -> {
+            
             int isgood = -1;
             try {
                 isgood = Vep.IDChecker(vep.ID, vep.LastName, vep.FirstName, Vote);
@@ -155,8 +166,16 @@ public class VotingUserInterface extends BorderPane {
             }
             if (isgood == 1) {
                 if (Vote.equals("1")) {
+                    Map keys = EncryptionTest.returnKey();
+                    BigInteger n = BigInteger.valueOf(1);
+                    evote = EncryptionTest.encrypt(keys,n);
+                    //TO BE WRITTEN: Send somone Evote, someone decrypts it, counts it, and saves it to a file.
                     Tally1++;
                 } else if (Vote.equals("2")) {
+                    Map keys = EncryptionTest.returnKey();
+                    BigInteger n = BigInteger.valueOf(2);
+                    evote = EncryptionTest.encrypt(keys,n);
+                    //TO BE WRITTEN: Send somone Evote, someone decrypts it, counts it, and saves it to a file.
                     Tally2++;
                 } else {
                     Text Error = new Text(5, 5, "ERROR! You have not selected a candidate");
