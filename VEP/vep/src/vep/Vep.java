@@ -35,8 +35,7 @@ public class Vep extends Application {
     //String styleFile = "vep/css/verifiableElectionStyle2.css";
     String styleFile = "vep/css/verifiableElectionStyle3.css";
 
-    public String FirstName = null;
-    public String LastName = null;
+    public String email = null;
     public String ID = null;
 
     @Override
@@ -92,10 +91,10 @@ public class Vep extends Application {
 //        }
     }
 
-    public static int IDChecker(String ID, String Lastname, String Firstname, String Vote) throws IOException {
+    public static int IDChecker(String ID, String email, String Vote) throws IOException {
 
-        String cmd = (System.getProperty("user.dir")).replace("C:", " ") + "\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R " + ID + " " + Lastname + Firstname + " " + Vote;
-        System.out.println(cmd);
+        String cmd = (System.getProperty("user.dir")).replace("C:", " ") + "\\hsamuelsonRstandalone\\R-3.3.0\\bin\\rscript.exe " + (System.getProperty("user.dir")).replace("C:", " ") + "\\tester.R " + ID + " " + email + " " + Vote;
+        //System.out.println(cmd);
         Runtime r = Runtime.getRuntime();
         Process pr = r.exec(cmd);
 
@@ -103,16 +102,18 @@ public class Vep extends Application {
                 new InputStreamReader(pr.getInputStream()));
 
         String s;
-
+        System.out.println("test1");
         while ((s = stdInput.readLine()) != null) {
+        System.out.println("test2");
             System.out.println(s);
             if (s.equals("[1] 1")) {
                 return 1;
-            } else if (s.equals("[1] 0")) {
-                return 0;
-            } else if(s.equals("[1] 666")){
+            }  else if(s.equals("[1] 666")){
                 return 666;
+            }else{
+                return 0;
             }
+            
             
         }
         return -1;
