@@ -57,30 +57,39 @@ public class SchedulePrototyper extends Application {
             switch(period) {
                 case 'A':
                     periodA.add(currentcourse);
+                    break;
                 case 'B':
                     periodB.add(currentcourse);
+                    break;
                 case 'C':
                     periodC.add(currentcourse);
+                    break;
                 case 'D':
                     periodD.add(currentcourse);
+                    break;
                 case 'E':
                     periodE.add(currentcourse);
+                    break;
                 case 'F':
                     periodF.add(currentcourse);
+                    break;
                 case 'G':
                     periodG.add(currentcourse);
+                    break;
                 case 'H':
                     periodH.add(currentcourse);
-                
+                    break;
             }
         }
         ScrollPane period1 = new ScrollPane();
         period1.minHeight(26);
         period1.minWidth(400);
         period1.setContent(getLabelPane(periodA));
-        System.out.println(periodA);
-        System.out.println(periodB);
-        StackPane period2 = new StackPane(getLabelPane(periodB));
+        ScrollPane period2 = new ScrollPane();
+        period2.minHeight(26);
+        period2.minWidth(400);
+        period2.setContent(getLabelPane(periodB));
+        //ScrollPane period2 = new ScrollPane(getLabelPane(periodB));
         StackPane period3 = new StackPane(getLabelPane(periodC));
         StackPane period4 = new StackPane(getLabelPane(periodD));
         StackPane period5 = new StackPane(getLabelPane(periodE));
@@ -102,19 +111,21 @@ public class SchedulePrototyper extends Application {
 //        ScrollPane period8 = new ScrollPane(getLabelPane(periodH));
 //        period8.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         coursesShown.getItems().addAll(period1, period2, period3, period4, period5, period6, period7, period8);
-        this.updatePrimaryStage(primaryStage);
-        this.updateCoursesShown();
+        this.instantiatePrimaryStage(primaryStage);
     }
     public FlowPane getLabelPane(ArrayList<Course> period) {
         FlowPane f = new FlowPane();
-        for(int j = 0; j < period.size(); j++) {
-          Course tmp = period.get(j);
-          Label r = new Label(tmp.getName());
+        StackPane stack;
+        Course tmp;
+        Label r;
+        for(int j = 0; j < period.size(); j++) {  
+          stack = new StackPane();
+          tmp = period.get(j);
+          r = new Label(tmp.getName());
           r.setStyle("-fx-background-color: orange; "
                   + "-fx-padding: 5px; "
                   + "-fx-border-width: 2px; "
                   + "-fx-border-color: #4d4d4d;");
-          StackPane stack = new StackPane();
           stack.getChildren().add(r);
           f.getChildren().add(stack);
         }
@@ -122,34 +133,13 @@ public class SchedulePrototyper extends Application {
         f.setVgap(5);
         return f;
     }
- 
-
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         launch(args);
     }
-
-    public void updateCoursesShown() {
-        //update coursesShown to reflect the keypress (get new data from courseTable)
-        SplitPane newCoursesShown = new SplitPane();
-        
-        for (int i = 0; i < 8; i++) {
-            //if i == the row that was just modified 
-            if (i == this.courseY) {
-                //get the new data
-                newCoursesShown.getItems().add(new StackPane(new Label("(" + this.courseX + ", " + i + ")")));
-            } else {
-                //else just use the old data
-                StackPane oldPane = (StackPane) coursesShown.getItems().get(i);
-                newCoursesShown.getItems().add(oldPane);
-            }
-        }
-        coursesShown = newCoursesShown;
-    }
-    
-    public void updatePrimaryStage(Stage primaryStage) {
+    public void instantiatePrimaryStage(Stage primaryStage) {
         StackPane leftPane = new StackPane(new Label("Left"));
         StackPane rightPane = new StackPane(coursesShown); //spacing = 8
         coursesShown.setOrientation(Orientation.VERTICAL);
@@ -160,29 +150,6 @@ public class SchedulePrototyper extends Application {
         leftPane.maxWidthProperty().bind(splitPane.widthProperty().multiply(0.25)); //0.25 = 25% of screen
         Scene scene = new Scene(new BorderPane(splitPane), 800, 600);
         primaryStage.setScene(scene);
-        this.assignControls(primaryStage);
         primaryStage.show();
-    }
-        
-    public void assignControls(Stage primaryStage) {
-        primaryStage.getScene().setOnKeyPressed((KeyEvent event) -> {
-            switch (event.getCode()) {
-                case LEFT:
-                    this.courseX--;
-                    break;
-                case RIGHT:
-                    this.courseX++;
-                    break;
-                case DOWN:
-                    this.courseY++;
-                    break;
-                case UP:
-                    this.courseY--;
-                    break;
-            }
-            System.out.println(courseX +", " + courseY);
-            this.updateCoursesShown();
-            this.updatePrimaryStage(primaryStage);
-        });
     }
 }
