@@ -1,4 +1,4 @@
-# setwd("C:/Users/HSamuelson/Documents/GitHub/APSDE/VEP/vep/")
+#setwd("C:/Users/HSamuelson/Documents/GitHub/APSDE/VEP/vep/")
 args <- commandArgs(trailingOnly = TRUE)
 
 #
@@ -22,7 +22,9 @@ args <- commandArgs(trailingOnly = TRUE)
   #To print final stats id has to == 666 and login has to be "sixsixsix"
 
 dataBase <- read.csv("idDatabase2.csv")
+dataBase$X <- NULL
 votes <- read.csv("votesTEMP.csv")
+votes$X <- NULL
 
 #arg1 -- id  <- your key you are sent via email.... (THIS IS NO LONGER STUDENT ID, due to security issues)
 #arg2 --"login"  <- hsamuelson
@@ -32,26 +34,50 @@ votes <- read.csv("votesTEMP.csv")
 returnFinalStats <- function(){
   
   #Percent of males who voted
-  percent.male <- as.numeric(length(subset(subset(dataBase, dataBase$hasvoted == 1), subset(dataBase, dataBase$hasvoted == 1)$gender == "M")[,1])) / as.numeric(length(subset(dataBase, dataBase$gender == "M")[,1]))
-  percent.female <-as.numeric(length(subset(subset(dataBase, dataBase$hasvoted == 1), subset(dataBase, dataBase$hasvoted == 1)$gender == "F")[,1])) / as.numeric(length(subset(dataBase, dataBase$gender == "F")[,1]))
+  percent.male <- as.numeric(
+    length(
+      subset(
+        subset(dataBase, dataBase$hasvoted == 1),
+        subset(dataBase, dataBase$hasvoted == 1)$gender == "M")[,1])
+    ) / as.numeric(
+      length(
+        subset(dataBase, dataBase$gender == "M")[,1])
+      )
+  
+  percent.female <-as.numeric(
+    length(
+      subset(
+        subset(dataBase, dataBase$hasvoted == 1),
+        subset(dataBase, dataBase$hasvoted == 1)$gender == "F")[,1])
+    ) / as.numeric(
+      length(
+        subset(dataBase, dataBase$gender == "F")[,1])
+      )
   percents <- cbind(percent.female, percent.male)
   
-  png("finalstatimages/pMFvote.png")  #write Image to png
+  png("src/finalstatimages/pMFvote.png")  #write Image to png
+  print("W")
   barplot(percents, main = "Percent of Male and female votes", ylab = "%")
   dev.off()
   
   #Actual number of votes male female
-  number.of.male.votes <- as.numeric(length(subset(subset(dataBase, dataBase$hasvoted == 1), subset(dataBase, dataBase$hasvoted == 1)$gender == "M")[,1]))
-  number.of.female.votes <- as.numeric(length(subset(subset(dataBase, dataBase$hasvoted == 1), subset(dataBase, dataBase$hasvoted == 1)$gender == "F")[,1]))
+  number.of.male.votes <- as.numeric(length(subset(subset(dataBase, dataBase$hasvoted == 1),
+                                                   subset(dataBase, dataBase$hasvoted == 1)$gender == "M")[,1]))
+  
+  number.of.female.votes <- as.numeric(length(subset(subset(dataBase, dataBase$hasvoted == 1), 
+                                                     subset(dataBase, dataBase$hasvoted == 1)$gender == "F")[,1]))
+  
   comb.number <- cbind(number.of.female.votes, number.of.male.votes)
   
-  png("finalstatimages/numVotesMF.png")
+  png("src/finalstatimages/numVotesMF.png")
+  print("WW")
   barplot(comb.number, main = "Total # of Votes M/F", ylab = "# of Votes")
   dev.off()
   
   
   #Votes by grade
-  png("finalstatimages/votesByGrade.png")
+  png("src/finalstatimages/votesByGrade.png")
+  print("WWWW")
   barplot(table(subset(dataBase, dataBase$hasvoted == 1)$gradyear),  main = "Votes per grade", ylab ="# of Votes")
   dev.off()
   
@@ -59,15 +85,15 @@ returnFinalStats <- function(){
 
 
 
-
 #Check if ID and name exsist and match
 idprocess <- function(idq, nameq, votingID){
-  if(idq == "666"){
-    if(nameq == "sixsixsix"){  #Return final stats to Gumere when id and last name == 666
-      returnFinalStats()
-      return("666")
-    }
-  }
+  
+  #if(idq == "666"){
+  #  if(nameq == "sixsixsix"){  #Return final stats to Gumere when id and last name == 666
+  #    returnFinalStats()
+  #    return(666)
+  #  }
+  #}
   #check if id exsists in order not to mess up the subset()
   idexsists <- 0
   for(i in 1:length(dataBase$id)){
@@ -77,36 +103,41 @@ idprocess <- function(idq, nameq, votingID){
   }
   #If the ID is invalid return
   if(idexsists != 1) {
-    return(0)
+    return("WRONG ID")
   }
   #ew now know the ID is valid so we can proporly try it tp see if the it matches the name
   if(tryCatch( subset(dataBase, dataBase$id == idq)$login == nameq)) {
-
     if(votingID == 0) {
       return(1)
     }
     counter <- 0
-    if(as.double(subset(dataBase, dataBase$id == idq)$hasvoted) == 0){ #If the row in hasVoted is 0 where the id in the row is equal to the inputed id.
+    if(subset(dataBase, dataBase$id == idq)$hasvoted == 0){ #If the row in hasVoted is 0 where the id in the row is equal to the inputed id.
       if(as.numeric(votingID) != as.numeric(0)) { #If there is a choce that is not zero, i.e. there is a canadite choice
                                                   #This is here becasue if the function is called for a initial login a zero will be inputed for the canadate id
         votes[as.numeric(votingID)] = votes[as.numeric(votingID)] + 1 #Change the row +1 where the id matches input id.
         counter = counter + 1
         write.csv(votes, file = "votesTEMP.csv")
         votes <- read.csv("votesTEMP.csv")
+        votes$X <- NULL
+        source("callR.R")
+        
+
       }
       
-      
       #user has voted change has voted column
-      dataBase[subset(dataBase, dataBase$id == idq)$easyIndex, ]$hasvoted = 1
-      counter = counter +1
+      dataBase[as.numeric(idq), ]$hasvoted <- 1
+      counter = counter + 1
       write.csv(dataBase, file = "idDatabase2.csv")
       dataBase <- read.csv("idDatabase2.csv")
+      dataBase$X <- NULL 
+      source("callR.R")
       if(counter ==2){
         return(1)  #If this is true that means the vote has been sucessfuly added and users "hasvoted" column has been updated.
       }
-    }
+      
+    } else {print("HAS VOTED ALREADY")}
   } else{
-    return(0)
+    return("ID DOES NOT MATCH USERNAME")
   } 
 }
 

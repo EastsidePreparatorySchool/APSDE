@@ -1,13 +1,16 @@
 .pane {
- -fx-background-color: #D16666;
- background-color:#D16666;
- -fx-font-family: "Times New Roman", Times, serif;
+    -fx-background-color: #25283D;
+    background-color: #25283D;
+}
+
+.text {
+    -fx-font-family: "Courier New", monospace;
+    -fx-font-size: 20px;
 }
 
 .box {
-    -fx-background-color:#B6C649;
-    -fx-max-width: 1500;   
-    max-width: 1500; 
+    -fx-background-color:#8F3985;
+    -fx-max-width: 1500px;   
 }
 #votingButtons {
     -fx-min-height: 50;
@@ -16,10 +19,13 @@
     -fx-max-width: 500;
     -fx-min-width: 500;
 }
+.contentBox {
+    -fx-background-color: #EFD9CE;
+    -fx-border: 25;
+    
+}
 #spoilingExplanation {
-    -fx-background-color: #C1C1C1;
-    background-color: #C1C1C1;
+    -fx-background-color: #EFD9CE;
+    background-color: #EFD9CE;
 }
-#header {
-    -fx-color: #C1C1C1;
-}
+
