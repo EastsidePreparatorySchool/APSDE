@@ -15,7 +15,7 @@ import java.util.Random;
 public abstract class Computer {
     //I made this class just so that public and election computer could share these three public values
     protected BigInteger n;
-    protected BigInteger g;
+    protected BigInteger e;
     protected BigInteger c;
    
 }

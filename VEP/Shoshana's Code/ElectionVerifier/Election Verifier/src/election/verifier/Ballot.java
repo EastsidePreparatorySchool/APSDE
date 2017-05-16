@@ -12,17 +12,16 @@ import java.math.BigInteger;
  * @author snovik
  */
 public class Ballot {
-    //read the encrypt ballot method in the election computer class to understand what x is
-    private BigInteger encryptedBallot;
-    private BigInteger encryptedX;
+    private final BigInteger encryptedBallot; //Encrypted ciphertext
+    private final BigInteger encryptedM; //Padded message (pre-encryption)
     
-    Ballot(BigInteger encryptedBallot, BigInteger encryptedX) {
+    Ballot(BigInteger encryptedBallot, BigInteger encryptedM) {
         this.encryptedBallot = encryptedBallot;
-        this.encryptedX = encryptedX;
+        this.encryptedM = encryptedM;
     }
     
-    public BigInteger getX() {
-        return this.encryptedX;
+    public BigInteger getM() {
+        return this.encryptedM;
     }
     
     public BigInteger getMainBallot() {
