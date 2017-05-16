@@ -44,6 +44,7 @@ public class VotingUserInterface extends BorderPane {
         HBox candidates = buildCandidatesHBox();
         HBox logoutButtonHolder = buildLogoutButton();
         HBox votingButtonsHolder = buildVotingButtons();
+        StackPane s = new StackPane();//used for coloring format
 
         //add relevant items to borderPane
         //since I can only add one node to the center I need a vbox to hold the candidate and buttons holders
@@ -53,10 +54,12 @@ public class VotingUserInterface extends BorderPane {
 
         //this is to style the borderPane with css
         this.getStyleClass().add("pane");
-        centerHolder.getStyleClass().add("box");
+        s.getStyleClass().add("box");
+        centerHolder.getStyleClass().add("contentBox");
 
         //place items where we want them and format top button to be on the right
-        this.setCenter(centerHolder);
+        s.getChildren().add(centerHolder);
+        this.setCenter(s);
         this.setMargin(this.getCenter(), new Insets(50, 0, 100, 0));
         this.setTop(logoutButtonHolder);
         this.setAlignment(this.getTop(), Pos.TOP_RIGHT);
@@ -85,8 +88,6 @@ public class VotingUserInterface extends BorderPane {
         });
 
         VBox picTextTwo = buildCandidateVBox("majaAndAyush.jpg", "Maja Johnson and Ayush Sharma", vote2);
-        //build checkBox
-        //these checkboxes are here for now however may be swapped out later for an alternative form of selection
 
         vote2.setFont(new Font(25));
         vote2.setOnMouseClicked((e) -> {
@@ -102,7 +103,6 @@ public class VotingUserInterface extends BorderPane {
         candidates.getChildren().addAll(picTextOne, picTextTwo);
         candidates.setAlignment(Pos.CENTER);
         candidates.setSpacing(200);
-        candidates.getStyleClass().add("box");
 
         return candidates;
     }
@@ -124,19 +124,10 @@ public class VotingUserInterface extends BorderPane {
         infoBox.setTextAlignment(TextAlignment.CENTER);
         infoBox.setFont(new Font(25));
 
-//        //build checkBox
-//        //these checkboxes are here for now however may be swapped out later for an alternative form of selection
-//        CheckBox vote = new CheckBox("Select this candidate");
-//        vote.setFont(new Font(25));
-//        vote.setOnMouseClicked((e) -> {
-//      
-//        });
         //combine elements
         vb.getChildren().addAll(display, infoBox, vote);
         vb.setAlignment(Pos.CENTER);
         vb.setSpacing(20);
-        vb.getStyleClass().add("box");
-
         return vb;
     }
 
@@ -201,7 +192,6 @@ public class VotingUserInterface extends BorderPane {
         votingButtonsHolder.getChildren().addAll(explainSpoilingButton, castVoteButton, spoilVoteButton);
         votingButtonsHolder.setAlignment(Pos.CENTER);
         votingButtonsHolder.setSpacing(50);
-        votingButtonsHolder.getStyleClass().addAll("box", "votingButtons");
 
         return votingButtonsHolder;
     }
@@ -237,13 +227,13 @@ public class VotingUserInterface extends BorderPane {
             VBox vb = new VBox();
             vb.getChildren().add(whatIsSpoiling);
             vb.setAlignment(Pos.CENTER);
-            vb.getStyleClass().add("spoilingExplanation");
+            vb.getStyleClass().addAll("spoilingExplanation");
 
-            ((VBox) this.getCenter()).getChildren().add(vb);
+            ((VBox) ((StackPane) this.getCenter()).getChildren().get(0)).getChildren().add(vb);
 
             this.explainedSpoiling = true;
         } else if (this.explainedSpoiling == true) {
-            ((VBox) this.getCenter()).getChildren().remove(2);
+            ((VBox) ((StackPane) this.getCenter()).getChildren().get(0)).getChildren().remove(2);
             this.explainedSpoiling = false;
         }
     }
