@@ -39,25 +39,33 @@ public class FinalResultsUserInterface extends BorderPane {
         VBox endProgramButtonHolder = this.buildEndProgramButton();
 
         this.getStyleClass().add("pane");
-        header.getStyleClass().add("header");
+        header.getStyleClass().add("box");
+        header.setMaxWidth(1000);
         middle.getStyleClass().add("box");
-        
+
         //add items to correct regions and format
         this.setTop(header);
         this.setAlignment(this.getTop(), Pos.CENTER);
         this.setCenter(middle);
+        this.setMargin(this.getCenter(), new Insets(0, 100, 0, 100));
         this.setBottom(endProgramButtonHolder);
+        this.setMargin(endProgramButtonHolder, new Insets(0, 0, 100, 0));
         this.setAlignment(this.getBottom(), Pos.CENTER);
     }
 
     private VBox buildMidRegionVBox() {
         VBox middle = new VBox();
 
+        HBox explanationHolder = new HBox(); //this lets me color it with css
         //build text explanation and format
         Text endExplanation = new Text(20, 40, "The graphs below summarize the results of the election along with statistics which the administration may find interesting. When you have finished viewing the graphs please hit the end program button to close down the program. These graphs and results will remain accessbile to you via a PDF which was generated upon the completion of the voting process.");
         endExplanation.setFont(new Font(30));
         endExplanation.setWrappingWidth(1000);
         endExplanation.setTextAlignment(TextAlignment.CENTER);
+
+        //add to holder hbox and format
+        explanationHolder.getChildren().add(endExplanation);
+        explanationHolder.getStyleClass().addAll("contentBox", "text");
 
         //grab formatted images
         HBox images = this.buildImagesHBox();
@@ -118,11 +126,13 @@ public class FinalResultsUserInterface extends BorderPane {
         //FK this is where your lambda will go
         Button endProgramButton = new Button("End Program");
         endProgramButton.setFont(new Font(20));
-        
+
         buttonHolder.getChildren().add(endProgramButton);
         buttonHolder.setAlignment(Pos.CENTER);
-        buttonHolder.setMargin(endProgramButton, new Insets(0,0,50,0));
-        
+        buttonHolder.setMargin(endProgramButton, new Insets(0, 0, 50, 0));
+        buttonHolder.getStyleClass().add("box");
+        buttonHolder.setMaxWidth(2000);
+
         return buttonHolder;
 
     }
