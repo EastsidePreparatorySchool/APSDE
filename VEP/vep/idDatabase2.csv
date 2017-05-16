@@ -1,12 +1,12 @@
 "","X.1","id","firstname","lastname","login","gradyear","gender","hasvoted"
-"1",1,1,"Adam","Benmalek","abenmalek",2017,"M",0
+"1",1,1,"Adam","Benmalek","abenmalek",2017,"M",1
 "2",2,2,"Nathan","Blinn","nblinn",2017,"M",1
-"3",3,3,"John","Corley","jcorley",2017,"M",0
+"3",3,3,"John","Corley","jcorley",2017,"M",1
 "4",4,4,"Talia","Culbertson","tculbertson",2017,"F",0
 "5",5,5,"Malav","Dipankar","mdipankar",2017,"M",0
 "6",6,6,"Sadie","Douglas","sdouglas",2017,"F",0
 "7",7,7,"Madison","Dry","mdry2",2017,"F",1
-"8",8,8,"James","Gehrke","jgehrke",2017,"M",0
+"8",8,8,"James","Gehrke","jgehrke",2017,"M",1
 "9",9,9,"Christy","Kearny","ckearny",2017,"F",0
 "10",10,10,"Caden","Keese","ckeese",2017,"M",0
 "11",11,11,"Claire","Kim","ckim",2017,"F",1
@@ -47,7 +47,7 @@
 "46",46,46,"Laura","Copeland","lcopeland",2018,"F",0
 "47",47,47,"Ryan","Corner","rcorner",2018,"M",0
 "48",48,48,"Michael","Dry","mdry",2018,"M",1
-"49",49,49,"Samuel","Freisem-Kirov","sfreisem-kirov",2018,"M",0
+"49",49,49,"Samuel","Freisem-Kirov","sfreisem-kirov",2018,"M",1
 "50",50,50,"Rory","French","rfrench",2018,"M",1
 "51",51,51,"Emily","Gjertsson","egjertsson",2018,"F",0
 "52",52,52,"Jessica","Gliner","jgliner",2018,"F",0
@@ -59,7 +59,7 @@
 "58",58,58,"Maja","Johnson","mjohnson",2018,"F",0
 "59",59,59,"Alena","Kane","akane",2018,"F",0
 "60",60,60,"Emma","Laird McConnell","elairdmcconnell",2018,"F",0
-"61",61,61,"Che","Liu","cliu",2018,"M",0
+"61",61,61,"Che","Liu","cliu",2018,"M",1
 "62",62,62,"Henry","Lucco","hlucco",2018,"M",0
 "63",63,63,"Peyton","Mann","pmann",2018,"F",0
 "64",64,64,"Leah","Marshall","lmarshall",2018,"F",0

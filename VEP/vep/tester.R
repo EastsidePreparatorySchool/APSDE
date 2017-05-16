@@ -1,4 +1,4 @@
-setwd("C:/Users/HSamuelson/Documents/GitHub/APSDE/VEP/vep/")
+#setwd("C:/Users/HSamuelson/Documents/GitHub/APSDE/VEP/vep/")
 args <- commandArgs(trailingOnly = TRUE)
 
 #
@@ -132,7 +132,7 @@ idprocess <- function(idq, nameq, votingID){
       dataBase$X <- NULL 
       source("callR.R")
       if(counter ==2){
-        return("EVERY CHANGE IS SUCCESFUL")  #If this is true that means the vote has been sucessfuly added and users "hasvoted" column has been updated.
+        return(1)  #If this is true that means the vote has been sucessfuly added and users "hasvoted" column has been updated.
       }
       
     } else {print("HAS VOTED ALREADY")}
