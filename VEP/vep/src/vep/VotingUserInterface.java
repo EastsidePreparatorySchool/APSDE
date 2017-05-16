@@ -158,6 +158,7 @@ public class VotingUserInterface extends BorderPane {
             if (isgood == 1) {
                 if (Vote.equals("1")) {
                     Tally1++;
+                    System.out.println(Tally1);
                 } else if (Vote.equals("2")) {
                     Tally2++;
                 } else {
