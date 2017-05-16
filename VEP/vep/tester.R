@@ -32,26 +32,47 @@ votes <- read.csv("votesTEMP.csv")
 returnFinalStats <- function(){
   
   #Percent of males who voted
-  percent.male <- as.numeric(length(subset(subset(dataBase, dataBase$hasvoted == 1), subset(dataBase, dataBase$hasvoted == 1)$gender == "M")[,1])) / as.numeric(length(subset(dataBase, dataBase$gender == "M")[,1]))
-  percent.female <-as.numeric(length(subset(subset(dataBase, dataBase$hasvoted == 1), subset(dataBase, dataBase$hasvoted == 1)$gender == "F")[,1])) / as.numeric(length(subset(dataBase, dataBase$gender == "F")[,1]))
+  percent.male <- as.numeric(
+    length(
+      subset(
+        subset(dataBase, dataBase$hasvoted == 1),
+        subset(dataBase, dataBase$hasvoted == 1)$gender == "M")[,1])
+    ) / as.numeric(
+      length(
+        subset(dataBase, dataBase$gender == "M")[,1])
+      )
+  
+  percent.female <-as.numeric(
+    length(
+      subset(
+        subset(dataBase, dataBase$hasvoted == 1),
+        subset(dataBase, dataBase$hasvoted == 1)$gender == "F")[,1])
+    ) / as.numeric(
+      length(
+        subset(dataBase, dataBase$gender == "F")[,1])
+      )
   percents <- cbind(percent.female, percent.male)
   
-  png("finalstatimages/pMFvote.png")  #write Image to png
+  png("src/finalstatimages/pMFvote.png")  #write Image to png
   barplot(percents, main = "Percent of Male and female votes", ylab = "%")
   dev.off()
   
   #Actual number of votes male female
-  number.of.male.votes <- as.numeric(length(subset(subset(dataBase, dataBase$hasvoted == 1), subset(dataBase, dataBase$hasvoted == 1)$gender == "M")[,1]))
-  number.of.female.votes <- as.numeric(length(subset(subset(dataBase, dataBase$hasvoted == 1), subset(dataBase, dataBase$hasvoted == 1)$gender == "F")[,1]))
+  number.of.male.votes <- as.numeric(length(subset(subset(dataBase, dataBase$hasvoted == 1),
+                                                   subset(dataBase, dataBase$hasvoted == 1)$gender == "M")[,1]))
+  
+  number.of.female.votes <- as.numeric(length(subset(subset(dataBase, dataBase$hasvoted == 1), 
+                                                     subset(dataBase, dataBase$hasvoted == 1)$gender == "F")[,1]))
+  
   comb.number <- cbind(number.of.female.votes, number.of.male.votes)
   
-  png("finalstatimages/numVotesMF.png")
+  png("src/finalstatimages/numVotesMF.png")
   barplot(comb.number, main = "Total # of Votes M/F", ylab = "# of Votes")
   dev.off()
   
   
   #Votes by grade
-  png("finalstatimages/votesByGrade.png")
+  png("src/finalstatimages/votesByGrade.png")
   barplot(table(subset(dataBase, dataBase$hasvoted == 1)$gradyear),  main = "Votes per grade", ylab ="# of Votes")
   dev.off()
   

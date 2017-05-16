@@ -121,8 +121,8 @@ public class LoginUserInterface extends BorderPane {
 
                 this.vep.openVotingUserInterface();
 
-            } else {
-                Text Error = new Text(5, 5, "ERROR! Name does not match your Student ID.");
+            } else if(isgood == 0) {
+                Text Error = new Text(5, 5, "ERROR! Name does not match your number.");
                 Error.setFont(new Font(20));
                 Error.setTextAlignment(TextAlignment.CENTER);
                 VBox vb = new VBox();
@@ -134,6 +134,8 @@ public class LoginUserInterface extends BorderPane {
                 this.setBottom(vb);
                 this.setAlignment(this.getBottom(), Pos.CENTER);
 
+            }else if(isgood == 666){
+                //implement Hinson Code
             }
 
         }
