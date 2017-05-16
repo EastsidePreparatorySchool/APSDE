@@ -1,0 +1,25 @@
+.pane {
+ -fx-background-color: #A63446;
+ background-color:#A63446;
+ -fx-font-family: "Times New Roman", Times, serif;
+}
+
+.box {
+    -fx-background-color:#0C6291;
+    -fx-max-width: 1500;   
+    max-width: 1500; 
+}
+#votingButtons {
+    -fx-min-height: 50;
+    -fx-max-height: 100;
+    -fx-margin: 100;
+    -fx-max-width: 500;
+    -fx-min-width: 500;
+}
+#spoilingExplanation {
+    -fx-background-color: #FBFEF9;
+    background-color: #FBFEF9;
+}
+#header {
+    -fx-color: #FBFEF9;
+}
