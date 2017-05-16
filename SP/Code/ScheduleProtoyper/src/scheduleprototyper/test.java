@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package scheduleprotoyper;
-import java.io.*;
+package scheduleprototyper;
+
 /**
  *
- * @author hmeng
+ * @author hhale
  */
-public class FileReader {
-    public static String readFile(){
-        
-        return null;
-    }
+public class test {
+    
 }

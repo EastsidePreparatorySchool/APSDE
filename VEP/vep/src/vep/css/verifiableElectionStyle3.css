@@ -1,0 +1,31 @@
+.pane {
+    -fx-background-color: #37392E;
+    background-color: #37392E;
+}
+
+.text {
+    -fx-font-family: "Courier New", monospace;
+    -fx-font-size: 20px;
+}
+
+.box {
+    -fx-background-color:#19647E;
+    -fx-max-width: 1500px;   
+}
+#votingButtons {
+    -fx-min-height: 50;
+    -fx-max-height: 100;
+    -fx-margin: 100;
+    -fx-max-width: 500;
+    -fx-min-width: 500;
+}
+.contentBox {
+    -fx-background-color: #DBFCFF;
+    -fx-border: 25;
+    
+}
+#spoilingExplanation {
+    -fx-background-color: #DBFCFF;
+    background-color: #DBFCFF;
+}
+
