@@ -148,7 +148,9 @@ public class VotingUserInterface extends BorderPane {
         castVoteButton.setOnMouseClicked((e) -> {
             int isgood = -1;
             try {
-                isgood = Vep.IDChecker(vep.ID, vep.LastName, vep.FirstName, Vote);
+                System.out.println(vep.ID);
+                System.out.println(vep.email);
+                isgood = Vep.IDChecker(vep.ID, vep.email, Vote);
 
             } catch (IOException ex) {
                 Logger.getLogger(VotingUserInterface.class.getName()).log(Level.SEVERE, null, ex);
@@ -156,12 +158,15 @@ public class VotingUserInterface extends BorderPane {
             if (isgood == 1) {
                 if (Vote.equals("1")) {
                     Tally1++;
+                    System.out.println(Tally1);
                 } else if (Vote.equals("2")) {
                     Tally2++;
+                    System.out.println(Tally2);
                 } else {
                     Text Error = new Text(5, 5, "ERROR! You have not selected a candidate");
                     Error.setFont(new Font(20));
                     Error.setTextAlignment(TextAlignment.CENTER);
+                    Error.setFill(Color.RED);
                     VBox vb = new VBox();
                     vb.getChildren().add(Error);
                     vb.setAlignment(Pos.CENTER);
@@ -177,6 +182,7 @@ public class VotingUserInterface extends BorderPane {
                 Text Error = new Text(5, 5, "ERROR! You have already voted!");
                 Error.setFont(new Font(20));
                 Error.setTextAlignment(TextAlignment.CENTER);
+                Error.setFill(Color.RED);
                 VBox vb = new VBox();
                 vb.getChildren().add(Error);
                 vb.setAlignment(Pos.CENTER);
