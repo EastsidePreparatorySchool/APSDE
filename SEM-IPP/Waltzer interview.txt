@@ -1,0 +1,23 @@
+Summary: Mr. Waltzer's biggest concern is that "it just works." - i.e. when he takes a photo with the SEM, any auto-contrast features or the like happen mostly automatically, and that the photo is then uploaded somewhere where it is accessible to a lot of people.
+
+Requirements:
+When I press the photo button, I should have the file placed somewhere where it is easily retrievable by lots of people. Perhaps Onenote or Onedrive?
+Value in both editing photos during the session and afterwards.
+Two goals:
+- Generate images
+- Understand the device
+
+Photos should be "just done".
+No complicated procedure for imaging.
+Perhaps a complicated and simple protocol depending on the user?
+
+- Are there any specific features you would want incorporated?
+
+Thinks it would be cool to toggle on and off false color. Zooming and cropping with the software would also be ideal. 
+Inserting arrows, labels, and markers onto an image would be cool.
+
+- Why is Photoshop not a good option for your use?
+
+Automatic archiving to the web would be great. Additionally, the time and date it was taken would also be recorded.
+A real time comment box, so that the operator could make comments about what they did to obtain the image would be helpful. Such comments would be associated with the image forever.
+When you take photos with a good digital camera, there is data that goes with each image, but is not seen on the image. Maybe implement a similar system for the SEM?
